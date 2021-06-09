@@ -9,10 +9,10 @@
                             <div class="card-body">
                                 <form class="user" method="POST" action="<?= base_url('auth') ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Input Email..." value="">
+                                        <input type="text" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Input Email..." value="<?= set_value('email') ?>"> <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Input Password...">
+                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Input Password..."> <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                                     </div>
                                     <button type="submit" class="btn btn-success btn-user btn-block">
                                         Sign In
