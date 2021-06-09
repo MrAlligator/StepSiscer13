@@ -16,13 +16,13 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="<?= base_url() ?>">
+                <a class="nav-link" href="<?= base_url('welcome/profil') ?>">
                     <i class="material-icons">person</i>
                     <p>User Profile</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="<?= base_url() ?>">
+                <a class="nav-link" href="<?= base_url('welcome/supplier') ?>">
                     <i class="material-icons">content_paste</i>
                     <p>Supplier</p>
                 </a>

@@ -23,9 +23,29 @@ class Welcome extends CI_Controller
 	{
 		$data['title'] = 'StepSiscer';
 		$this->load->view('_partials/head', $data);
-		$this->load->view('_partials/sidebar');
-		$this->load->view('_partials/topbar');
-		$this->load->view('blank');
-		$this->load->view('_partials/foot');
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('blank', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+
+	public function profil()
+	{
+		$data['title'] = 'User Profile';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('profil', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+
+	public function supplier()
+	{
+		$data['title'] = 'Data Supplier';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('supplier', $data);
+		$this->load->view('_partials/foot', $data);
 	}
 }
