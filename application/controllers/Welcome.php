@@ -21,7 +21,8 @@ class Welcome extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('_partials/head');
+		$data['title'] = 'StepSiscer';
+		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar');
 		$this->load->view('_partials/topbar');
 		$this->load->view('blank');
