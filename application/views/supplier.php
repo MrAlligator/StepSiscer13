@@ -4,132 +4,58 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title ">Simple Table</h4>
-                                    <p class="card-category"> Here is a subtitle for this table</p>
+                                    <?php if (isset($_SESSION['email']) && $_SESSION['role_id'] == 1) : ?>
+                                        <h4 class="card-title ">Tabel Supplier</h4>
+                                        <a href="<?= base_url() ?>"><button>Tambah Supplier</button></a>
+                                    <?php else : ?>
+                                        <h4 class="card-title ">Tabel Supplier</h4>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead class=" text-primary">
                                                 <th>
-                                                    ID
+                                                    No
                                                 </th>
                                                 <th>
-                                                    Name
+                                                    Id Anggota
                                                 </th>
                                                 <th>
-                                                    Country
+                                                    Nama
                                                 </th>
                                                 <th>
-                                                    City
+                                                    Perusahaan
                                                 </th>
                                                 <th>
-                                                    Salary
+                                                    Alamat
                                                 </th>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        1
-                                                    </td>
-                                                    <td>
-                                                        Dakota Rice
-                                                    </td>
-                                                    <td>
-                                                        Niger
-                                                    </td>
-                                                    <td>
-                                                        Oud-Turnhout
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        $36,738
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        2
-                                                    </td>
-                                                    <td>
-                                                        Minerva Hooper
-                                                    </td>
-                                                    <td>
-                                                        Curaçao
-                                                    </td>
-                                                    <td>
-                                                        Sinaai-Waas
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        $23,789
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        3
-                                                    </td>
-                                                    <td>
-                                                        Sage Rodriguez
-                                                    </td>
-                                                    <td>
-                                                        Netherlands
-                                                    </td>
-                                                    <td>
-                                                        Baileux
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        $56,142
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        4
-                                                    </td>
-                                                    <td>
-                                                        Philip Chaney
-                                                    </td>
-                                                    <td>
-                                                        Korea, South
-                                                    </td>
-                                                    <td>
-                                                        Overland Park
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        $38,735
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        5
-                                                    </td>
-                                                    <td>
-                                                        Doris Greene
-                                                    </td>
-                                                    <td>
-                                                        Malawi
-                                                    </td>
-                                                    <td>
-                                                        Feldkirchen in Kärnten
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        $63,542
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        6
-                                                    </td>
-                                                    <td>
-                                                        Mason Porter
-                                                    </td>
-                                                    <td>
-                                                        Chile
-                                                    </td>
-                                                    <td>
-                                                        Gloucester
-                                                    </td>
-                                                    <td class="text-primary">
-                                                        $78,615
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                $no = 1;
+                                                foreach ($supplier as $sup) :
+                                                ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?php
+                                                            echo $no++;
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $sup->no_agt ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $sup->nama_anggota ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $sup->nama_perusahaan ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $sup->alamat ?>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>

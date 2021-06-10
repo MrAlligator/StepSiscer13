@@ -3,7 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Welcome extends CI_Controller
 {
-
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model("supplier_model");
+	}
 	/**
 	 * Index Page for this controller.
 	 *
@@ -42,6 +46,7 @@ class Welcome extends CI_Controller
 	public function supplier()
 	{
 		$data['title'] = 'Data Supplier';
+		$data['supplier'] = $this->supplier_model->getAll();
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);

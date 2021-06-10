@@ -15,30 +15,51 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="<?= base_url('welcome/profil') ?>">
-                    <i class="material-icons">person</i>
-                    <p>User Profile</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="<?= base_url('welcome/supplier') ?>">
-                    <i class="material-icons">content_paste</i>
-                    <p>Supplier</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="<?= base_url() ?>">
-                    <i class="material-icons">library_books</i>
-                    <p>Perhitungan Bobot</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="<?= base_url() ?>">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>Bobot</p>
-                </a>
-            </li>
+            <?php if (isset($_SESSION['email'])) : ?>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= base_url('welcome/profil') ?>">
+                        <i class="material-icons">person</i>
+                        <p>User Profile</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= base_url('welcome/supplier') ?>">
+                        <i class="material-icons">content_paste</i>
+                        <p>Supplier</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= base_url() ?>">
+                        <i class="material-icons">library_books</i>
+                        <p>Perhitungan Bobot</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= base_url() ?>">
+                        <i class="material-icons">bubble_chart</i>
+                        <p>Bobot</p>
+                    </a>
+                </li>
+            <?php else : ?>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= base_url('welcome/supplier') ?>">
+                        <i class="material-icons">content_paste</i>
+                        <p>Supplier</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= base_url() ?>">
+                        <i class="material-icons">library_books</i>
+                        <p>Perhitungan Bobot</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="<?= base_url() ?>">
+                        <i class="material-icons">bubble_chart</i>
+                        <p>Bobot</p>
+                    </a>
+                </li>
+            <?php endif; ?>
         </ul>
     </div>
 </div>
