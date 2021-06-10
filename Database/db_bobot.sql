@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jun 2021 pada 05.19
+-- Waktu pembuatan: 10 Jun 2021 pada 06.59
 -- Versi server: 10.4.8-MariaDB
 -- Versi PHP: 7.3.10
 
@@ -29,13 +29,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_supplier` (
-  `no` int(11) NOT NULL,
   `no_agt` int(11) NOT NULL,
   `nama_anggota` varchar(255) NOT NULL,
   `nama_perusahaan` varchar(255) NOT NULL,
   `alamat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tb_supplier`
+--
+
+INSERT INTO `tb_supplier` (`no_agt`, `nama_anggota`, `nama_perusahaan`, `alamat`) VALUES
+(5, 'H. Margono', 'COKRO', 'BATUR, TEGAL, CEPER'),
+(16, 'Ali Afandi', 'RAJA TERANG', 'BATUR, TEGAL, CEPER'),
+(23, 'Padyo Hartono', 'SUMBER HIDUP', 'BANGKALAN, CEPER, KLATEN'),
+(24, 'H. Agus Salim', 'CV. INDRA DATA SAKTI', 'BANGKALAN, CEPER, KLATEN'),
+(30, 'H. Dawan Ashari', 'KARYA MAKMUR', 'BANGKALAN BARU, CEPER'),
 (32, 'H. Wachid Hasyim', 'BAJA JAYA', 'NGAWONGGO'),
 (47, 'H. Suarto', 'SINAR INDUSTRI', 'TAMPIRAN'),
 (52, 'Ishar Abadi', 'SINAR ABADI', 'BANGKALAN, CEPER, KLATEN'),
@@ -206,7 +215,27 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `name`, `email`, `foto_user`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(9, 'Rizki Widya Pratama', 'rizkiw8778@gmail.com', 'default.jpg', '$2y$10$Q7LlWXaF1.6tlkdoTC5wbuKCuHc.ydfPq6OvYur8z8TYnAtfwQdVW', 1, 1, 1619068190);
+(9, 'Rizki Widya Pratama', 'rizkiw8778@gmail.com', 'default.jpg', '$2y$10$Q7LlWXaF1.6tlkdoTC5wbuKCuHc.ydfPq6OvYur8z8TYnAtfwQdVW', 1, 1, 1619068190),
+(10, 'Heri Suhartono', 'herisuhartono23@gmail.com', 'default.jpg', '$2y$10$Q7LlWXaF1.6tlkdoTC5wbuKCuHc.ydfPq6OvYur8z8TYnAtfwQdVW', 2, 1, 1619068190);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `id_role` int(11) NOT NULL,
+  `role` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user_role`
+--
+
+INSERT INTO `user_role` (`id_role`, `role`) VALUES
+(1, 'Administrator'),
+(2, 'User');
 
 --
 -- Indexes for dumped tables
@@ -225,6 +254,12 @@ ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indeks untuk tabel `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id_role`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -232,7 +267,13 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
