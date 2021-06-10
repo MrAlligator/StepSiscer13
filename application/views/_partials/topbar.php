@@ -29,12 +29,12 @@
                                 Account
                             </p>
                         </a>
-                        <?php if (isset($user['email'])) : ?>
+                        <?php if (isset($_SESSION['email'])) : ?>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                <a class="dropdown-item" href="#">Profile</a>
+                                <a class="dropdown-item" href="<?= base_url('welcome/profil') ?>">Profile</a>
                                 <a class="dropdown-item" href="#">Settings</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log out</a>
+                                <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">Log out</a>
                             </div>
                         <?php else : ?>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
