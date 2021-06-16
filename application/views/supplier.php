@@ -30,6 +30,9 @@
                                                 <th>
                                                     Alamat
                                                 </th>
+                                                <th>
+                                                    Perintah
+                                                </th>
                                             </thead>
                                             <tbody>
                                                 <?php
@@ -53,6 +56,10 @@
                                                         </td>
                                                         <td>
                                                             <?php echo $sup->alamat ?>
+                                                        </td>
+                                                        <td>
+                                                            <a class="nav-link" href="<?= base_url('welcome/update_supplier/'.$sup->id_anggota) ?>">UPDATE</a>
+                                                            <a class="nav-link" href="<?= base_url('welcome/delete_supplier/'.$sup->id_anggota) ?>">DELETE</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

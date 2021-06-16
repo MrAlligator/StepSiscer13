@@ -64,6 +64,21 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/foot', $data);
 	}
 	
+	public function create_data_supplier()
+	{
+		$data['title'] = 'Tambah Data Supplier';
+		$query = $this->supplier_model->create();
+
+		if($query){
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data tersimpan</div>');
+			redirect('welcome/supplier');
+		}else{
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data tidak tersimpan</div>');
+			redirect('welcome/supplier');
+		}
+
+	}
+	
 	public function update_supplier()
 	{
 		$data['title'] = 'Ubah Data Supplier';

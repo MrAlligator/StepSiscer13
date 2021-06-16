@@ -4,7 +4,7 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header card-header-primary">
-                                    <h4 class="card-title">Edit Profile</h4>
+                                    <h4 class="card-title">Update Supplier</h4>
                                     <p class="card-category">Complete your profile</p>
                                 </div>
                                 <div class="card-body">
@@ -12,20 +12,28 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Email address</label>
-                                                    <input type="email" class="form-control" value="<?= $_SESSION['email'] ?>">
+                                                    <label class="bmd-label-floating">Nama Supplier</label>
+                                                    <input type="text" name="nama_anggota" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="bmd-label-floating">Name</label>
-                                                    <input type="text" class="form-control" value="<?= $_SESSION['name'] ?>">
+                                                    <label class="bmd-label-floating">Nama Perusahaan</label>
+                                                    <input type="text" name="nama_perusahaan" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Alamat</label>
+                                                    <input type="text" name="alamat" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pull-right">Update Supplier</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
