@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jun 2021 pada 06.59
--- Versi server: 10.4.8-MariaDB
--- Versi PHP: 7.3.10
+-- Generation Time: Jun 16, 2021 at 02:42 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,21 +24,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_supplier`
+-- Table structure for table `tb_supplier`
 --
 
 CREATE TABLE `tb_supplier` (
-  `no_agt` int(11) NOT NULL,
+  `id_anggota` int(11) NOT NULL,
   `nama_anggota` varchar(255) NOT NULL,
   `nama_perusahaan` varchar(255) NOT NULL,
   `alamat` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_supplier`
+-- Dumping data for table `tb_supplier`
 --
 
-INSERT INTO `tb_supplier` (`no_agt`, `nama_anggota`, `nama_perusahaan`, `alamat`) VALUES
+INSERT INTO `tb_supplier` (`id_anggota`, `nama_anggota`, `nama_perusahaan`, `alamat`) VALUES
 (5, 'H. Margono', 'COKRO', 'BATUR, TEGAL, CEPER'),
 (16, 'Ali Afandi', 'RAJA TERANG', 'BATUR, TEGAL, CEPER'),
 (23, 'Padyo Hartono', 'SUMBER HIDUP', 'BANGKALAN, CEPER, KLATEN'),
@@ -196,7 +195,7 @@ INSERT INTO `tb_supplier` (`no_agt`, `nama_anggota`, `nama_perusahaan`, `alamat`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -211,7 +210,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `name`, `email`, `foto_user`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -221,7 +220,7 @@ INSERT INTO `tb_user` (`id_user`, `name`, `email`, `foto_user`, `password`, `rol
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -230,7 +229,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id_role`, `role`) VALUES
@@ -242,35 +241,41 @@ INSERT INTO `user_role` (`id_role`, `role`) VALUES
 --
 
 --
--- Indeks untuk tabel `tb_supplier`
+-- Indexes for table `tb_supplier`
 --
 ALTER TABLE `tb_supplier`
-  ADD PRIMARY KEY (`no_agt`);
+  ADD PRIMARY KEY (`id_anggota`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indeks untuk tabel `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_supplier`
+--
+ALTER TABLE `tb_supplier`
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
+
+--
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `user_role`
+-- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

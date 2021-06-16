@@ -60,6 +60,7 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
+		$this->load->view('add_supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
 	
@@ -69,6 +70,7 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
+		$this->load->view('update_supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
 	
