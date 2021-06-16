@@ -53,4 +53,31 @@ class Welcome extends CI_Controller
 		$this->load->view('supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
+	
+	public function add_supplier()
+	{
+		$data['title'] = 'Tambah Data Supplier';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+	
+	public function update_supplier()
+	{
+		$data['title'] = 'Ubah Data Supplier';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+	
+	public function delete_supplier()
+	{
+		$data['title'] = 'Hapus Data Supplier';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('_partials/foot', $data);
+	}
 }

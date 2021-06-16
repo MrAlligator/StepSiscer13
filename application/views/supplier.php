@@ -6,7 +6,7 @@
                                 <div class="card-header card-header-primary">
                                     <?php if (isset($_SESSION['email']) && $_SESSION['role_id'] == 1) : ?>
                                         <h4 class="card-title ">Tabel Supplier</h4>
-                                        <a href="<?= base_url() ?>"><button>Tambah Supplier</button></a>
+                                        <a href="<?= base_url('welcome/add_supplier') ?>"><button>Tambah Supplier</button></a>
                                     <?php else : ?>
                                         <h4 class="card-title ">Tabel Supplier</h4>
                                     <?php endif; ?>
@@ -43,7 +43,7 @@
                                                             ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $sup->no_agt ?>
+                                                            <?php echo $sup->id_anggota?>
                                                         </td>
                                                         <td>
                                                             <?php echo $sup->nama_anggota ?>
