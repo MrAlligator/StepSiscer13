@@ -70,18 +70,19 @@ class Welcome extends CI_Controller
 		$query = $this->supplier_model->create();
 
 		if($query){
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data tersimpan</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tersimpan</div>');
 			redirect('welcome/supplier');
 		}else{
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data tidak tersimpan</div>');
 			redirect('welcome/supplier');
 		}
-
+		
 	}
 	
-	public function update_supplier()
+	public function update_supplier($id)
 	{
 		$data['title'] = 'Ubah Data Supplier';
+		$data['supplier'] = $this->db->get_where('tb_supplier', ['id_anggota'=>$id])->row_array();
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
@@ -89,12 +90,12 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/foot', $data);
 	}
 	
-	public function delete_supplier()
+	public function delete_supplier($id)
 	{
-		$data['title'] = 'Hapus Data Supplier';
-		$this->load->view('_partials/head', $data);
-		$this->load->view('_partials/sidebar', $data);
-		$this->load->view('_partials/topbar', $data);
-		$this->load->view('_partials/foot', $data);
+		$data['title'] = $id;
+		
+		$this->supplier_model->delete($id);
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data terhapus</div>');		
+		redirect('welcome/supplier');
 	}
 }

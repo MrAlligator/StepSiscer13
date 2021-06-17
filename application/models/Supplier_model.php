@@ -33,8 +33,9 @@ class Supplier_model extends CI_Model
         return $this->db->update($this->_table,$data,$id);
     }
     
-    public function dekete($id)
+    public function delete($id)
     {
-        return $this->db->delete($this->_table, $id);
+        $this->db->where('id_anggota', $id);
+        return $this->db->delete($this->_table);
     }
 }

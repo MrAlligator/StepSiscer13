@@ -1,12 +1,13 @@
             <div class="content">
                 <div class="container-fluid">
+                    <?= $this->session->flashdata('message'); ?>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <?php if (isset($_SESSION['email']) && $_SESSION['role_id'] == 1) : ?>
                                         <h4 class="card-title ">Tabel Supplier</h4>
-                                        <a href="<?= base_url('welcome/add_supplier') ?>"><button>Tambah Supplier</button></a>
+                                        <a class="btn btn-success" href="<?= base_url('welcome/add_supplier') ?>">Tambah Supplier</a>
                                     <?php else : ?>
                                         <h4 class="card-title ">Tabel Supplier</h4>
                                     <?php endif; ?>
@@ -58,8 +59,7 @@
                                                             <?php echo $sup->alamat ?>
                                                         </td>
                                                         <td>
-                                                            <a class="nav-link" href="<?= base_url('welcome/update_supplier/'.$sup->id_anggota) ?>">UPDATE</a>
-                                                            <a class="nav-link" href="<?= base_url('welcome/delete_supplier/'.$sup->id_anggota) ?>">DELETE</a>
+                                                            <a class="btn btn-success" href="<?= base_url('welcome/update_supplier/'.$sup->id_anggota) ?>">DETAIL</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
