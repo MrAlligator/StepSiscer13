@@ -1,13 +1,12 @@
             <div class="content">
-                <div class="container-fluid">
-                    <hr>
+                <div class="container-fluid"><hr>
                     <div class="row justify-content-center">
                         <div class="col-lg-5 card card-nav-tabs text-center">
-                            <?php echo $this->session->flashdata('message'); ?>
                             <div class="card-header card-header-primary">
                                 Welcome
                             </div>
                             <div class="card-body">
+                            <?php echo $this->session->flashdata('message'); ?>
                                 <form class="user" method="POST" action="<?= base_url('auth') ?>">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Input Email..." value="<?= set_value('email') ?>"> <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
@@ -22,11 +21,9 @@
                                             </button>
                                         </div>
                                         <div class="col-lg-6">
-                                            <a href="<?= base_url() ?>">
-                                                <button class="btn btn-success btn-user btn-block">
-                                                    Daftar
-                                                </button>
-                                            </a>
+                                                <a class="btn btn-success btn-user btn-block" href="<?= base_url('auth/register')?>">
+                                                    Sign Up
+                                                </a>
                                         </div>
                                     </div>
                                     <a href="<?= base_url('welcome') ?>" class="btn btn-primary btn-user btn-block">

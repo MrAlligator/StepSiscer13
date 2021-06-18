@@ -7,22 +7,8 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model("user_model");
     }
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     * 		http://example.com/index.php/welcome
-     *	- or -
-     * 		http://example.com/index.php/welcome/index
-     *	- or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
-     */
     public function index()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
@@ -40,7 +26,7 @@ class Auth extends CI_Controller
         } else {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
-
+            
             $user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
             // var_dump($user);
             // die;
@@ -74,10 +60,29 @@ class Auth extends CI_Controller
             }
         }
     }
-
+    
     public function logout()
     {
         $this->session->sess_destroy();
         redirect('welcome');
     }
+    
+    public function register()
+	{
+        $data['title'] = 'REGISTRASI';
+        $this->load->view('_partials/head', $data);
+        $this->load->view('register');
+        $this->load->view('_partials/footer');
+
+		$name	= $this->input->post('name');
+
+		// $query = $this->user_model->create();
+		// if($query){
+		// 	$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun '.$name.' tersimpan</div>');
+		// 	redirect('welcome/supplier');
+		// }else{
+		// 	$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun '.$name.' tidak tersimpan</div>');
+		// 	redirect('welcome/supplier');
+		// }	
+	}
 }

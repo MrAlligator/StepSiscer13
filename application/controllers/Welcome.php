@@ -76,8 +76,7 @@ class Welcome extends CI_Controller
 		}else{
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data '.$nama_anggota.' tidak tersimpan</div>');
 			redirect('welcome/supplier');
-		}
-		
+		}	
 	}
 	
 	public function update_supplier($id)
