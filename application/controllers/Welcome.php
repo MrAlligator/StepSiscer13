@@ -67,13 +67,14 @@ class Welcome extends CI_Controller
 	public function create_data_supplier()
 	{
 		$data['title'] = 'Tambah Data Supplier';
+		$nama_anggota	= $this->input->post('nama_anggota');
 		$query = $this->supplier_model->create();
 
 		if($query){
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data tersimpan</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data '.$nama_anggota.' tersimpan</div>');
 			redirect('welcome/supplier');
 		}else{
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data tidak tersimpan</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data '.$nama_anggota.' tidak tersimpan</div>');
 			redirect('welcome/supplier');
 		}
 		
@@ -90,12 +91,33 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/foot', $data);
 	}
 	
-	public function delete_supplier($id)
+	public function delete_supplier()
 	{
-		$data['title'] = $id;
-		
-		$this->supplier_model->delete($id);
-		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data terhapus</div>');		
+		$id					= $this->input->post('id_anggota');
+		$nama_belum_ubah	= $this->input->post('nama_belum_ubah');
+		$query = $this->supplier_model->delete();
+
+		if($query){
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data' .$nama_belum_ubah.' telah terhapus</div>');		
+			redirect('welcome/supplier');
+		}else{
+			$this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data '.$nama_belum_ubah.' gagal terhapus</div>');		
+			redirect('welcome/supplier');
+			}
+	}
+
+	public function edit_supplier()
+	{
+		$id					= $this->input->post('id_anggota');
+		$nama_belum_ubah	= $this->input->post('nama_belum_ubah');
+		$query = $this->supplier_model->update();
+
+		if($query){
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data '.$nama_belum_ubah.' telah diubah</div>');		
 		redirect('welcome/supplier');
+		}else{
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data '.$nama_belum_ubah.' gagal diubah</div>');		
+		redirect('welcome/supplier');
+		}
 	}
 }

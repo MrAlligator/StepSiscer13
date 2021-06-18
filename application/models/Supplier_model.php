@@ -23,18 +23,22 @@ class Supplier_model extends CI_Model
         return $this->db->insert($this->_table,$data);
     }
 
-    public function update($id)
+    public function update()
     {
+        $id					= $this->input->post('id_anggota');
         $data = array(
             'nama_anggota'      => $this->input->post('nama_anggota'),
             'nama_perusahaan'   => $this->input->post('nama_perusahaan'),
             'alamat'            => $this->input->post('alamat')
-        );
-        return $this->db->update($this->_table,$data,$id);
+        ); 
+        $this->db->where('id_anggota', $id);
+        return $this->db->update($this->_table,$data);
     }
     
-    public function delete($id)
+    public function delete()
     {
+        $id					= $this->input->post('id_anggota');
+        
         $this->db->where('id_anggota', $id);
         return $this->db->delete($this->_table);
     }
