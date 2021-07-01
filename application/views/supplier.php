@@ -6,10 +6,8 @@
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <?php if (isset($_SESSION['email']) && $_SESSION['role_id'] == 1) : ?>
-                                        <h4 class="card-title ">Tabel Supplier</h4>
-                                        <a class="btn btn-info pull-right" href="<?= base_url('welcome/add_supplier') ?>">Tambah Supplier</a>
-                                    <?php else : ?>
-                                        <h4 class="card-title ">Tabel Supplier</h4>
+                                        <h4 class="card-title pull-right">Tabel Supplier</h4>
+                                        <a class="btn btn-success" href="<?= base_url('welcome/add_supplier') ?>">Tambah Supplier</a>
                                     <?php endif; ?>
                                 </div>
                                 <div class="card-body">
