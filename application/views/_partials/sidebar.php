@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="<?= base_url() ?>">
+                    <a class="nav-link" href="<?= base_url('welcome/hitung') ?>">
                         <i class="material-icons">library_books</i>
                         <p>Perhitungan Bobot</p>
                     </a>
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="<?= base_url() ?>">
+                    <a class="nav-link" href="<?= base_url('welcome/hitung') ?>">
                         <i class="material-icons">library_books</i>
                         <p>Perhitungan Bobot</p>
                     </a>

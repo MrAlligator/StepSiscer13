@@ -33,6 +33,16 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/foot', $data);
 	}
 
+	public function hitung()
+	{
+		$data['title'] = 'Perhitungan Bobot';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('hitung', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+
 	public function profil()
 	{
 		$data['title'] = 'User Profile';
@@ -53,7 +63,7 @@ class Welcome extends CI_Controller
 		$this->load->view('supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function add_supplier()
 	{
 		$data['title'] = 'Tambah Data Supplier';
@@ -63,46 +73,46 @@ class Welcome extends CI_Controller
 		$this->load->view('add_supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function create_data_supplier()
 	{
 		$data['title'] = 'Tambah Data Supplier';
 		$nama_anggota	= $this->input->post('nama_anggota');
 		$query = $this->supplier_model->create();
 
-		if($query){
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data '.$nama_anggota.' tersimpan</div>');
+		if ($query) {
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data ' . $nama_anggota . ' tersimpan</div>');
 			redirect('welcome/supplier');
-		}else{
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data '.$nama_anggota.' tidak tersimpan</div>');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data ' . $nama_anggota . ' tidak tersimpan</div>');
 			redirect('welcome/supplier');
-		}	
+		}
 	}
-	
+
 	public function update_supplier($id)
 	{
 		$data['title'] = 'Ubah Data Supplier';
-		$data['supplier'] = $this->db->get_where('tb_supplier', ['id_anggota'=>$id])->row_array();
+		$data['supplier'] = $this->db->get_where('tb_supplier', ['id_anggota' => $id])->row_array();
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
 		$this->load->view('update_supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function delete_supplier()
 	{
 		$id					= $this->input->post('id_anggota');
 		$nama_belum_ubah	= $this->input->post('nama_belum_ubah');
 		$query = $this->supplier_model->delete();
 
-		if($query){
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data' .$nama_belum_ubah.' telah terhapus</div>');		
+		if ($query) {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data' . $nama_belum_ubah . ' telah terhapus</div>');
 			redirect('welcome/supplier');
-		}else{
-			$this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data '.$nama_belum_ubah.' gagal terhapus</div>');		
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-warning" role="alert">Data ' . $nama_belum_ubah . ' gagal terhapus</div>');
 			redirect('welcome/supplier');
-			}
+		}
 	}
 
 	public function edit_supplier()
@@ -111,12 +121,12 @@ class Welcome extends CI_Controller
 		$nama_belum_ubah	= $this->input->post('nama_belum_ubah');
 		$query = $this->supplier_model->update();
 
-		if($query){
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data '.$nama_belum_ubah.' telah diubah</div>');		
-		redirect('welcome/supplier');
-		}else{
-		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data '.$nama_belum_ubah.' gagal diubah</div>');		
-		redirect('welcome/supplier');
+		if ($query) {
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data ' . $nama_belum_ubah . ' telah diubah</div>');
+			redirect('welcome/supplier');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data ' . $nama_belum_ubah . ' gagal diubah</div>');
+			redirect('welcome/supplier');
 		}
 	}
 }
