@@ -3,10 +3,77 @@
             <nav class="float-left">
                 <ul>
                     <li>
-                        <a href="https://www.creative-tim.com">
+                        <a href="#" data-toggle="modal" data-target="#creative">
                             Creative Tim
                         </a>
                     </li>
+
+<div class="modal" id="creative" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">TIM KREATIF</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div><br>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <img class="img" src="<?= base_url('assets/img/default.png') ?>"/>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-category text-gray">System Analyst</h6>
+                    <h4 class="card-title">Febiola Putri Yunita</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <img class="img" src="<?= base_url('assets/img/default.png') ?>"/>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-category text-gray">Frontend Developer</h6>
+                    <h4 class="card-title">Rizki Widya Pratama</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <img class="img" src="<?= base_url('assets/img/default.png') ?>"/>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-category text-gray">Backend Developer</h6>
+                    <h4 class="card-title">Fabryzal Adam P.</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <img class="img" src="<?= base_url('assets/img/default.png') ?>"/>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-category text-gray">Designer and Writer</h6>
+                    <h4 class="card-title">Bima Bagaskara</h4>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">KEMBALI</button>
+      </div>
+    </div>
+  </div>
+</div>
+
                     <li>
                         <a href="https://creative-tim.com/presentation">
                             About Us
@@ -29,7 +96,7 @@
                 <script>
                     document.write(new Date().getFullYear())
                 </script>, made with <i class="material-icons">favorite</i> by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+                <a href="https://www.creative-tim.com" target="_blank">Tim Kentang</a> for a better life.
             </div>
         </div>
     </footer>

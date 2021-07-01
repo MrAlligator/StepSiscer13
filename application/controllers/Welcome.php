@@ -12,7 +12,8 @@ class Welcome extends CI_Controller
 	
 	public function index()
 	{
-		$data['title'] = 'StepSiscer';
+		$data['title'] = 'Sistem Optimasi Bobot';
+		$data['nav'] = '1';
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
@@ -25,7 +26,7 @@ class Welcome extends CI_Controller
 		$data['title'] = 'Bobot Supplier';
 		$data['supplier'] = $this->db->get_where('tb_supplier', ['id_anggota' => $id])->row_array();
 		for( $i=1; $i<=10; $i++){
-		$data['bobot_supplier'.$i] = $this->db->get_where('tb_bobot', ['id_anggota' => $id, 'id_kriteria'=>$i])->row_array();
+			$data['bobot_supplier'.$i] = $this->db->get_where('tb_bobot', ['id_anggota' => $id, 'id_kriteria'=>$i])->row_array();
 		}
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
@@ -38,7 +39,7 @@ class Welcome extends CI_Controller
 	{
 		$nama_anggota	= $this->input->post('nama_anggota');
 		$query			= $this->bobot_model->create();
-	
+		
 		if ($query) {
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' tersimpan</div>');
 			redirect('welcome/supplier');
@@ -47,10 +48,11 @@ class Welcome extends CI_Controller
 			redirect('welcome/supplier');
 		}
 	}
-
+	
 	public function profil()
 	{
 		$data['title'] = 'User Profile';
+		$data['nav'] = '2';
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
@@ -61,6 +63,7 @@ class Welcome extends CI_Controller
 	public function supplier()
 	{
 		$data['title'] = 'Data Supplier';
+		$data['nav'] = '3';
 		$data['supplier'] = $this->supplier_model->getAll();
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
@@ -69,6 +72,17 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/foot', $data);
 	}
 
+	public function optimasi()
+	{
+		$data['title'] = 'Optimasi Bobot';
+		$data['nav'] = '4';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('optimasi', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+	
 	public function add_supplier()
 	{
 		$data['title'] = 'Tambah Data Supplier';

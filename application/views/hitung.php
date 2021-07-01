@@ -3,22 +3,25 @@
                     <div class="card col-lg-8">
                         <div class="card-header card-header-primary">
                         <h2 class="card-title text-center"><strong>BOBOT SUPPLIER</strong></h2>
-                            <div class="row">
-                                <div class="col-3"><h6>Nama Anggota</h6></div>
-                                <div class="col-9"><h6>: <?= $supplier['nama_anggota']; ?></h6></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-3"><h6>Nama Perusahaan</h6></div>
-                                <div class="col-9"><h6>: <?= $supplier['nama_perusahaan']; ?></h6></div>
-                            </div>
                         </div>
                         
                         <div class="card-body">
+
+                            <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-3"><h6 class="text-primary">   Anggota</h6></div>
+                                <div class="col"><h6>: <?= $supplier['nama_anggota']; ?></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><h6 class="text-primary">Perusahaan</h6></div>
+                                <div class="col"><h6>: <?= $supplier['nama_perusahaan']; ?></h6></div>
+                            </div>
+                            
                             <h3 class="text-primary text-center">Berikan bobot setiap kriteria</h3>
                             <form action="<?= base_url('welcome/bobot_supplier') ?>" method="post">
                                 <input type="text" name="nama_anggota" value="<?= $supplier['nama_anggota']; ?>" hidden="true">
                                 <input type="text" name="id_anggota" value="<?= $supplier['id_anggota']; ?>" hidden="true">
-                                
+                            
                         <div class="row input-group mb-3">
                             <div class="col-1 input-group-prepend">
                                 <h2 class="input-group-text text-primary text-center">NO</h2>
@@ -280,10 +283,11 @@
                                     </select>
                                 </div>
                             </div>  
+                                <div class="card-footer">
                                 <div class="col">
                                     <button type="submit" class="btn btn-primary pull-right">Submit</button>
                                 </div>
-
+                                </div>
                             </form>
                         </div>
                     </div>

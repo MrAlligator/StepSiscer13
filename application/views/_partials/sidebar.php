@@ -1,39 +1,58 @@
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-    <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
     <div class="logo"><a href="<?= site_url() ?>" class="simple-text logo-normal">
-            Bobot Kriteria Suplier
-        </a></div>
+            Optimasi Bobot<br>
+            Kriteria Supplier
+        </a>
+    </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item active  ">
-                <a class="nav-link" href="<?= base_url() ?>">
-                    <i class="material-icons">dashboard</i>
-                    <p>Dashboard</p>
-                </a>
+
+            <?php if($nav==1) :?>
+            <li class="nav-item active">
+            <?php else :?>
+            <li class="nav-item">
+            <?php endif;?>
+
+            <a class="nav-link" href="<?= base_url() ?>">
+                <i class="material-icons">dashboard</i><p>Dashboard</p>
+            </a>
             </li>
+
             <?php if (isset($_SESSION['email'])) : ?>
-                <li class="nav-item ">
-                    <a class="nav-link" href="<?= base_url('welcome/profil') ?>">
-                        <i class="material-icons">person</i>
-                        <p>User Profile</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="<?= base_url('welcome/supplier') ?>">
-                        <i class="material-icons">content_paste</i>
-                        <p>Supplier</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="<?= base_url('welcome/hitung') ?>">
-                        <i class="material-icons">library_books</i>
-                        <p>Optimasi Bobot</p>
-                    </a>
-                </li>
+            <?php if($nav==2) :?>
+            <li class="nav-item active">
+            <?php else :?>
+            <li class="nav-item">
+            <?php endif;?>
+                
+            <a class="nav-link" href="<?= base_url('welcome/profil') ?>">
+                <i class="material-icons">person</i><p>User Profile</p>
+            </a>
+            </li>
+        
+            <?php if($nav==3) :?>
+            <li class="nav-item active">
+            <?php else :?>
+            <li class="nav-item">
+            <?php endif;?>
+            
+            <a class="nav-link" href="<?= base_url('welcome/supplier') ?>">
+            <i class="material-icons">content_paste</i><p>Supplier</p>
+        </a>
+    </li>
+    
+            <?php if($nav==4) :?>
+            <li class="nav-item active">
+            <?php else :?>
+            <li class="nav-item">
+            <?php endif;?>
+            
+            <a class="nav-link" href="<?= base_url('welcome/optimasi') ?>">
+                <i class="material-icons">library_books</i><p>Optimasi Bobot</p>
+            </a>
+            </li>
+            
             <?php endif; ?>
         </ul>
     </div>

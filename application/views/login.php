@@ -8,11 +8,24 @@
                             <div class="card-body">
                             <?php echo $this->session->flashdata('message'); ?>
                                 <form class="user" method="POST" action="<?= base_url('auth') ?>">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Input Email..." value="<?= set_value('email') ?>"> <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
+                                <div class="row form-group">
+                                <div class="col-12">
+                                    <?= form_error('email', '<small class="text-danger text-left">', '</small>') ?>
+                                    <input type="text" class="form-control form-control-user" id="email" name="email" aria-describedby="emailHelp" placeholder="Input Email..." value="<?= set_value('email') ?>">
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Input Password..."> <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
+                                </div>
+                                <div class="row form-group">
+                                <div class="col-7">
+                                    <?= form_error('password', '<small class="text-danger text-center">', '</small>') ?>
+                                    <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Input Password...">
+                                </div>
+                                <div class="col-5">
+                                <label class="input-group-text">
+                                    |<input type="checkbox" id="show-password">
+                                    | Show Password
+                                </label>
+                                </div>
+                                    </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -35,3 +48,16 @@
                     </div>
                 </div>
             </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+  $(document).ready(function(){  
+   $('#show-password').click(function(){
+    if($(this).is(':checked')){
+     $('#password').attr('type','text');
+    }else{
+     $('#password').attr('type','password');
+    }
+   });
+  });
+ </script>
