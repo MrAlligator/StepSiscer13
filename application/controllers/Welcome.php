@@ -40,10 +40,10 @@ class Welcome extends CI_Controller
 		$query			= $this->bobot_model->create();
 	
 		if ($query) {
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Bobot ' . $nama_anggota . ' tersimpan</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' tersimpan</div>');
 			redirect('welcome/supplier');
 		} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Bobot' . $nama_anggota . ' gagal tersimpan</div>');
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot' . $nama_anggota . ' gagal tersimpan</div>');
 			redirect('welcome/supplier');
 		}
 	}

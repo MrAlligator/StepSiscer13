@@ -2,14 +2,21 @@
                 <div class="container-fluid">
                     <div class="card col-lg-8">
                         <div class="card-header card-header-primary">
-                            <!-- <h1 class="card-title ">Bobot  Supplier</h1> -->
-                        <h4>
-                        Nama Anggota : <?= $supplier['nama_anggota']; ?><br>
-                        Nama Perusahaan : <?= $supplier['nama_perusahaan']; ?></h4>
+                        <h2 class="card-title text-center"><strong>BOBOT SUPPLIER</strong></h2>
+                            <div class="row">
+                                <div class="col-3"><h6>Nama Anggota</h6></div>
+                                <div class="col-9"><h6>: <?= $supplier['nama_anggota']; ?></h6></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><h6>Nama Perusahaan</h6></div>
+                                <div class="col-9"><h6>: <?= $supplier['nama_perusahaan']; ?></h6></div>
+                            </div>
                         </div>
+                        
                         <div class="card-body">
                             <h3 class="text-primary text-center">Berikan bobot setiap kriteria</h3>
                             <form action="<?= base_url('welcome/bobot_supplier') ?>" method="post">
+                                <input type="text" name="nama_anggota" value="<?= $supplier['nama_anggota']; ?>" hidden="true">
                                 <input type="text" name="id_anggota" value="<?= $supplier['id_anggota']; ?>" hidden="true">
                                 
                         <div class="row input-group mb-3">
@@ -272,10 +279,9 @@
                                         <option>5</option>
                                     </select>
                                 </div>
-                            </div>
-
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>  
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
                                 </div>
 
                             </form>
