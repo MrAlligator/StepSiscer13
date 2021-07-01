@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2021 at 02:42 PM
+-- Generation Time: Jul 01, 2021 at 11:49 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -20,6 +20,56 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_bobot`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_bobot`
+--
+
+CREATE TABLE `tb_bobot` (
+  `id_bobot` int(11) NOT NULL,
+  `id_anggota` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_detail_bobot`
+--
+
+CREATE TABLE `tb_detail_bobot` (
+  `id_bobot` int(11) NOT NULL,
+  `id_kriteria` int(11) NOT NULL,
+  `bobot` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_kriteria`
+--
+
+CREATE TABLE `tb_kriteria` (
+  `id_kriteria` int(11) NOT NULL,
+  `kriteria` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_kriteria`
+--
+
+INSERT INTO `tb_kriteria` (`id_kriteria`, `kriteria`) VALUES
+(1, 'Management Ability'),
+(2, 'Price'),
+(3, 'Environmental awareness'),
+(4, 'Shipping performance'),
+(5, 'Service'),
+(6, 'Flexibility'),
+(7, 'Technical ability'),
+(8, 'Innovative'),
+(9, 'Management approach'),
+(10, 'Geographical location');
 
 -- --------------------------------------------------------
 
@@ -190,7 +240,9 @@ INSERT INTO `tb_supplier` (`id_anggota`, `nama_anggota`, `nama_perusahaan`, `ala
 (267, 'Herjuno Ariwibowo Arifin', '', 'JL. JAWA NO. 27 RT. 007/004, KEL TIMUR'),
 (268, 'Siti Hartuti', 'TUNAS LOGAM JAYA', 'BATUR, TEGALREJO, CEPER'),
 (269, 'Osep Teja Sulamunajat ', 'CV. MARIA IFIFIFERRO', 'NGAWONGGO, RT.19/09, CEPER, KLATEN'),
-(270, 'Edward Iwan Tirta', 'NASIONAL IRON CASTING', 'BATUR, RT 003/001, TEGALREJO,CEPER');
+(270, 'Edward Iwan Tirta', 'NASIONAL IRON CASTING', 'BATUR, RT 003/001, TEGALREJO,CEPER'),
+(277, 'Rizki Widya Pratama', 'RIZKICORP', 'TUBAN'),
+(278, 'Fabryzal Adam Pramudya', 'ZL Land', 'BONDOWOSO');
 
 -- --------------------------------------------------------
 
@@ -241,6 +293,18 @@ INSERT INTO `user_role` (`id_role`, `role`) VALUES
 --
 
 --
+-- Indexes for table `tb_bobot`
+--
+ALTER TABLE `tb_bobot`
+  ADD PRIMARY KEY (`id_bobot`);
+
+--
+-- Indexes for table `tb_kriteria`
+--
+ALTER TABLE `tb_kriteria`
+  ADD PRIMARY KEY (`id_kriteria`);
+
+--
 -- Indexes for table `tb_supplier`
 --
 ALTER TABLE `tb_supplier`
@@ -263,10 +327,22 @@ ALTER TABLE `user_role`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_bobot`
+--
+ALTER TABLE `tb_bobot`
+  MODIFY `id_bobot` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_kriteria`
+--
+ALTER TABLE `tb_kriteria`
+  MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `tb_supplier`
 --
 ALTER TABLE `tb_supplier`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
