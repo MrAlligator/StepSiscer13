@@ -31,29 +31,10 @@
                 <li class="nav-item ">
                     <a class="nav-link" href="<?= base_url('welcome/hitung') ?>">
                         <i class="material-icons">library_books</i>
-                        <p>Perhitungan Bobot</p>
-                    </a>
-                </li>
-            <?php else : ?>
-                <li class="nav-item ">
-                    <a class="nav-link" href="<?= base_url('welcome/supplier') ?>">
-                        <i class="material-icons">content_paste</i>
-                        <p>Supplier</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="<?= base_url('welcome/hitung') ?>">
-                        <i class="material-icons">library_books</i>
-                        <p>Perhitungan Bobot</p>
+                        <p>Optimasi Bobot</p>
                     </a>
                 </li>
             <?php endif; ?>
-            <li class="nav-item ">
-                <a class="nav-link" href="<?= base_url() ?>">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>Bobot</p>
-                </a>
-            </li>
         </ul>
     </div>
 </div>

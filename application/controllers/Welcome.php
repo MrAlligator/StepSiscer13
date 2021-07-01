@@ -7,22 +7,9 @@ class Welcome extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("supplier_model");
+		$this->load->model("bobot_model");
 	}
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	
 	public function index()
 	{
 		$data['title'] = 'StepSiscer';
@@ -32,15 +19,33 @@ class Welcome extends CI_Controller
 		$this->load->view('blank', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-
-	public function hitung()
+	
+	public function hitung($id)
 	{
-		$data['title'] = 'Perhitungan Bobot';
+		$data['title'] = 'Bobot Supplier';
+		$data['supplier'] = $this->db->get_where('tb_supplier', ['id_anggota' => $id])->row_array();
+		for( $i=1; $i<=10; $i++){
+		$data['bobot_supplier'.$i] = $this->db->get_where('tb_bobot', ['id_anggota' => $id, 'id_kriteria'=>$i])->row_array();
+		}
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
 		$this->load->view('hitung', $data);
 		$this->load->view('_partials/foot', $data);
+	}
+	
+	public function bobot_supplier()
+	{
+		$nama_anggota	= $this->input->post('nama_anggota');
+		$query			= $this->bobot_model->create();
+	
+		if ($query) {
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Bobot ' . $nama_anggota . ' tersimpan</div>');
+			redirect('welcome/supplier');
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data Bobot' . $nama_anggota . ' gagal tersimpan</div>');
+			redirect('welcome/supplier');
+		}
 	}
 
 	public function profil()
@@ -52,7 +57,7 @@ class Welcome extends CI_Controller
 		$this->load->view('profil', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-
+	
 	public function supplier()
 	{
 		$data['title'] = 'Data Supplier';
