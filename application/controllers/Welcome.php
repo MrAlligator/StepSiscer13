@@ -71,11 +71,12 @@ class Welcome extends CI_Controller
 		$this->load->view('supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-
+	
 	public function optimasi()
 	{
 		$data['title'] = 'Optimasi Bobot';
 		$data['nav'] = '4';
+		$data['supplier'] = $this->supplier_model->getAll();
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
