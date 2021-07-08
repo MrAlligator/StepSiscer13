@@ -285,7 +285,8 @@
                             </div>  
                                 <div class="card-footer">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                    <button type="submit" class="btn btn-primary pull-right">PROSES</button>
+                                    <a class="btn btn-warning" href="<?= base_url('welcome/update_supplier/'.$supplier['id_anggota']) ?>">KEMBALI</a>
                                 </div>
                                 </div>
                             </form>

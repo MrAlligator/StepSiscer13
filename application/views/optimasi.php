@@ -7,7 +7,7 @@
                         <h4 class="card-title">Optimasi Bobot Kriteria Supplier</h4>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="<?= base_url('genetik/genetika') ?>">
+                        <form method="post" id="optimasi" action="<?= base_url('genetik/genetika') ?>">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                             <button type="submit" class="btn btn-primary">PROSES</button>
-                            <button type="button" class="btn btn-danger pull-right">BATAL</button>
+                            <button type="reset" id="reset" class="btn btn-danger pull-right">BATAL</button>
                         <div class="clearfix"></div>
                         </form>
                     </div>
