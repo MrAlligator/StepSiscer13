@@ -3,6 +3,7 @@
             
 <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
+        <a href="<?= base_url('welcome/supplier') ?>">
         <div class="card card-stats">
             <div class="card-header card-header-info card-header-icon">
                 <div class="card-icon">
@@ -17,6 +18,7 @@
                 </div>
             </div>
         </div>
+        </a>
     </div>
 
     <div class="col-lg-3 col-md-6 col-sm-6" data-toggle="modal" data-target="#admin">
