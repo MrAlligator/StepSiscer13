@@ -34,11 +34,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php if (isset($_SESSION['email']) && $_SESSION['role_id'] == 1) : ?>
                                         <button type="button" class="btn btn-danger pull-right"  data-toggle="modal" data-target="#yakinhapus">HAPUS</button>
                                         <button type="submit" class="btn btn-primary pull-right">EDIT</button>
                                         <a class="btn btn-success pull-right" href="<?= base_url()?>welcome/hitung/<?=$supplier['id_anggota']?>">BOBOT</a>
                                         <a class="btn btn-warning" href="<?= base_url('welcome/supplier') ?>">KEMBALI</a>
                                         <div class="clearfix"></div>
+                                        <?php else : ?>
+                                        <a class="btn btn-warning pull-right" href="<?= base_url('welcome/supplier') ?>">KEMBALI</a>
+                                        <?php endif; ?>
                                     </form>
 <div class="modal" id="yakinhapus" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

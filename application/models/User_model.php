@@ -13,6 +13,18 @@ class User_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
     
+    public function getAdmin()
+    {
+        $this->db->where('role_id', 1);
+        return $this->db->get($this->_table)->result();
+    }
+    
+    public function getUser()
+    {
+        $this->db->where('role_id', 2);
+        return $this->db->get($this->_table)->result();
+    }
+    
     public function create()
     {
         $data = array(

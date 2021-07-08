@@ -31,6 +31,8 @@
             </a>
             </li>
         
+    
+            <?php endif; ?>
             <?php if($nav==3) :?>
             <li class="nav-item active">
             <?php else :?>
@@ -41,7 +43,7 @@
             <i class="material-icons">content_paste</i><p>Supplier</p>
         </a>
     </li>
-    
+            
             <?php if($nav==4) :?>
             <li class="nav-item active">
             <?php else :?>
@@ -52,8 +54,6 @@
                 <i class="material-icons">library_books</i><p>Optimasi Bobot</p>
             </a>
             </li>
-            
-            <?php endif; ?>
         </ul>
     </div>
 </div>

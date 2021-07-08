@@ -8,10 +8,14 @@ class Welcome extends CI_Controller
 		parent::__construct();
 		$this->load->model("supplier_model");
 		$this->load->model("bobot_model");
+		$this->load->model("user_model");
 	}
 	
 	public function index()
 	{
+		$data['supplier']	= $this->supplier_model->getAll();
+		$data['admin']	= $this->user_model->getAdmin();
+		$data['user']	= $this->user_model->getUser();
 		$data['title']	= 'Sistem Optimasi Bobot';
 		$data['nav']	= '1';
 		$this->load->view('_partials/head', $data);
@@ -45,7 +49,7 @@ class Welcome extends CI_Controller
 		$bobot			= $this->bobot_model->update();
 		$cek 			= $this->db->get_where('tb_bobot', ['id_anggota' => $id])->row_array();
 		
-		if ($cek!=0){
+		if ($cek=0){
 			if ($query) {
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' tersimpan</div>');
 				redirect('welcome/supplier');
