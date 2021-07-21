@@ -16,13 +16,21 @@ class Genetik extends CI_Controller
         $this->load->model('kriteria_model');
     }
 
-    public function optimasi($jumlah_populasi, $mutasi, $crossover)
+    public function optimasi()
     {
-        $data['gen']                = $this->bobot_model->getRandom($jumlah_populasi);
-        $data['nav']                = 5;
-        $data['title']                = 5;
-        $data['a']      = $this->kriteria_model->getBobot(5);
-        $data['b']      = $this->bobot_model->getk1(5);
+        $jumlah_populasi    = $this->input->post('jumlah_populasi');
+        $crossover          = $this->input->post('crossover');
+        $mutasi             = $this->input->post('mutasi');
+        $data['jp']         = $jumlah_populasi;
+        $data['cr']         = $crossover;
+        $data['mu']         = $mutasi;
+        $data['gen']        = $this->bobot_model->getRandom($jumlah_populasi);
+        $data['nav']        = 5;
+        $data['title']      = 5;
+        $data['a']          = $this->kriteria_model->getBobot(5);
+        $data['b']          = $this->bobot_model->getk1(5);
+        $data['z']          = $this->supplier_model->getId();
+        // $data['id']     = $this->bobot_model->getId();
 
         // if(){
         $this->load->view('_partials/head', $data);
@@ -35,11 +43,11 @@ class Genetik extends CI_Controller
 
     public function genetika()
     {
-        $crossover          = $this->input->post('target');
-        $jumlah_populasi    = $this->input->post('jumlah_populasi');
-        $mutasi             = $this->input->post('mutasi');
-
-        return $this->optimasi($crossover, $jumlah_populasi, $mutasi);
+        $data = [
+            'jp' => $this->input->post('jp'),
+            'mu' => $this->input->post('mu'),
+            'cr' => $this->input->post('cr'),
+        ];
     }
 
     public function seleksi()
