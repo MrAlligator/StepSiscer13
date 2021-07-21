@@ -29,11 +29,11 @@ class Supplier_model extends CI_Model
     public function create()
     {
         $data = array(
-        'nama_anggota'      => $this->input->post('nama_anggota'),
-        'nama_perusahaan'   => $this->input->post('nama_perusahaan'),
-        'alamat'            => $this->input->post('alamat')
+            'nama_anggota'      => $this->input->post('nama_anggota'),
+            'nama_perusahaan'   => $this->input->post('nama_perusahaan'),
+            'alamat'            => $this->input->post('alamat')
         );
-        return $this->db->insert($this->_table,$data);
+        return $this->db->insert($this->_table, $data);
     }
 
     public function update(){
@@ -42,9 +42,9 @@ class Supplier_model extends CI_Model
             'nama_anggota'      => $this->input->post('nama_anggota'),
             'nama_perusahaan'   => $this->input->post('nama_perusahaan'),
             'alamat'            => $this->input->post('alamat')
-        ); 
+        );
         $this->db->where('id_anggota', $id);
-        return $this->db->update($this->_table,$data);
+        return $this->db->update($this->_table, $data);
     }
     
     public function delete(){

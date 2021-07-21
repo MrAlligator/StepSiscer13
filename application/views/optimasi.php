@@ -28,16 +28,21 @@
                                     <label class="bmd-label-floating">Crossover</label>
                                     <input type="number" required name="crossover" class="form-control" step="0.1" min=0.0 max=1.0>
                                 </div>
-                            </div>
-                            <div class="col-md-1">
-                                <div class="form-group">
-                                    <a href="#cr" data-toggle="modal"><i class="material-icons">notifications</i></a>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Crossover</label>
+                                        <input type="number" id="crossover" name="crossover" class="form-control" step="0.1" min=0.0 max=1.0>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="form-group">
+                                        <a href="#cr" data-toggle="modal"><i class="material-icons">notifications</i></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                             <button type="submit" class="btn btn-primary">PROSES</button>
                             <button type="reset" id="reset" class="btn btn-danger pull-right">BATAL</button>
-                        <div class="clearfix"></div>
+                            <div class="clearfix"></div>
                         </form>
                     </div>
                 </div>
