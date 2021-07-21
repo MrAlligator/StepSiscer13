@@ -25,46 +25,43 @@ class Welcome extends CI_Controller
 		$this->load->view('blank', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-
-	public function hitung($id)
-	{
+	
+	public function bobot_supplier($id){
 		$data['title']		= 'Bobot Supplier';
 		$data['nav']		= '3';
 		$data['supplier']	= $this->db->get_where('tb_supplier', ['id_anggota' => $id])->row_array();
-		for ($i = 1; $i <= 10; $i++) {
-			$data['bobot_supplier' . $i] = $this->db->get_where('tb_bobot', ['id_anggota' => $id, 'id_kriteria' => $i])->row_array();
-		}
+		$data['kriteria']	= $this->supplier_model->getKriteria();
+		$data['bobot_supplier'] = $this->db->get_where('tb_bobot', ['id_anggota' => $id])->row_array();
+		
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
-		$this->load->view('hitung', $data);
+		$this->load->view('bobot_supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-
-	public function bobot_supplier()
+	
+	public function input_bobot()
 	{
 		$nama_anggota	= $this->input->post('nama_anggota');
 		$id				= $this->input->post('id_anggota');
 		$data['nav']	= '3';
-		$query			= $this->bobot_model->create();
-		$bobot			= $this->bobot_model->update();
 		$cek 			= $this->db->get_where('tb_bobot', ['id_anggota' => $id])->row_array();
-
-		if ($cek = 0) {
-			if ($query) {
+		
+		if ($cek==0){
+			if ($this->bobot_model->create()) {
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' tersimpan</div>');
-				redirect('welcome/supplier');
+				redirect('welcome/bobot_supplier/'.$id);
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot' . $nama_anggota . ' gagal tersimpan</div>');
-				redirect('welcome/supplier');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot ' . $nama_anggota . ' gagal tersimpan</div>');
+				redirect('welcome/bobot_supplier/'.$id);
 			}
-		} else {
-			if ($bobot) {
-				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' tersimpan</div>');
-				redirect('welcome/supplier');
+		}else{
+			if ($this->bobot_model->update()) {
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' telah diubah</div>');
+				redirect('welcome/bobot_supplier/'.$id);
 			} else {
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot' . $nama_anggota . ' gagal tersimpan</div>');
-				redirect('welcome/supplier');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot ' . $nama_anggota . ' gagal diubah</div>');
+				redirect('welcome/bobot_supplier/'.$id);
 			}
 		}
 	}
@@ -98,13 +95,26 @@ class Welcome extends CI_Controller
 		$data['title']		= 'Optimasi Bobot';
 		$data['nav']		= '4';
 		$data['supplier']	= $this->supplier_model->getAll();
+		$data['kriteria']	= $this->supplier_model->getKriteria();
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
 		$this->load->view('optimasi', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-
+	
+	public function kriteria()
+	{
+		$data['title']		= 'Kriteria';
+		$data['nav']		= '5';
+		$data['kriteria']	= $this->supplier_model->getKriteria();
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('kriteria', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+	
 	public function add_supplier()
 	{
 		$data['title'] = 'Tambah Data Supplier';
@@ -166,7 +176,7 @@ class Welcome extends CI_Controller
 		$data['nav'] 		= '3';
 		$nama_belum_ubah	= $this->input->post('nama_belum_ubah');
 		$query = $this->supplier_model->update();
-
+		
 		if ($query) {
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data ' . $nama_belum_ubah . ' telah diubah</div>');
 			redirect('welcome/supplier');
