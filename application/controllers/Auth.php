@@ -26,7 +26,7 @@ class Auth extends CI_Controller
         } else {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
-            
+
             $user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
             // var_dump($user);
             // die;
@@ -60,29 +60,48 @@ class Auth extends CI_Controller
             }
         }
     }
-    
+
     public function logout()
     {
         $this->session->sess_destroy();
         redirect('welcome');
     }
-    
+
     public function register()
-	{
-        $data['title'] = 'REGISTRASI';
-        $this->load->view('_partials/head', $data);
-        $this->load->view('register');
-        $this->load->view('_partials/footer');
+    {
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim', [
+            'required' => 'Nama Tidak Boleh Kosong!'
+        ]);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tb_user.email]', [
+            'is_unique' => 'Email Telah Terdaftar',
+            'required' => 'Email Tidak Boleh Kosong!'
+        ]);
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]', [
+            'matches' => 'Kata Sandi tidak Sama!',
+            'min_length' => 'Kata Sandi tidak boleh kurang dari 8 karakter!',
+            'required' => 'Kata Sandi Tidak Boleh Kosong!'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
-		$name	= $this->input->post('name');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'Daftar Akun';
+            $this->load->view('_partials/head', $data);
+            $this->load->view('register');
+            $this->load->view('_partials/footer');
+        } else {
+            $data = [
+                'name' => htmlspecialchars($this->input->post('name', true)),
+                'email' => htmlspecialchars($this->input->post('email', true)),
+                'foto_user' => 'default.jpg',
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'role_id' => 2,
+                'is_active' => 1,
+                'date_created' => time()
+            ];
 
-		// $query = $this->user_model->create();
-		// if($query){
-		// 	$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun '.$name.' tersimpan</div>');
-		// 	redirect('welcome/supplier');
-		// }else{
-		// 	$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun '.$name.' tidak tersimpan</div>');
-		// 	redirect('welcome/supplier');
-		// }	
-	}
+            $this->db->insert('tb_user', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun berhasil dibuat.</div>');
+            redirect('auth');
+        }
+    }
 }

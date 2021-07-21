@@ -14,7 +14,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Email address</label>
-                                                    <input type="email" class="form-control" value="<?= $_SESSION['email'] ?>">
+                                                    <input type="email" class="form-control" value="<?= $_SESSION['email'] ?>" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -22,11 +22,11 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name</label>
-                                                    <input type="text" class="form-control" value="<?= $_SESSION['name'] ?>">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['name'] ?>" readonly>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                        <a class="btn btn-primary pull-right" href="<?= base_url('welcome/updatepict') ?>">Edit Profile</a>
                                         <div class="clearfix"></div>
                                         <a class="btn btn-primary pull-right" href="<?= base_url('welcome/updatepass') ?>">Edit Password</a>
                                     </form>
