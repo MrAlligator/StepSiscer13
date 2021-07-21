@@ -20,13 +20,13 @@
         </thead>
         <tbody>
         <?php   $no = 1;
-        foreach ($populasi as $sup) : ?>
+        foreach ($gen as $sup) : ?>
             <tr>
                 <td><?= $no++;?>.</td>
-                <td><?= $sup->id_anggota?></td>
-                <td><?= $sup->nama_anggota ?></td>
-                <td><?= $sup->alamat ?></td>
-                <td><?= RAND(0.0,5.0) ?></td>
+                <td><?= $sup->k1?></td>
+                <td><?= $sup->k2?></td>
+                <td><?= $sup->k3?></td>
+                <td><?= $sup->k4?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>

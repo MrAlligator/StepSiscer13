@@ -11,6 +11,13 @@ class Bobot_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
     
+    public function getRandom($jumlah_populasi)
+    {
+        $this->db->limit($jumlah_populasi,0);
+        $this->db->order_by("RAND ()");
+        return $this->db->get($this->_table)->result();
+    }
+    
     public function create(){
             $data = array(
                 'id_anggota'    => $this->input->post('id_anggota'),

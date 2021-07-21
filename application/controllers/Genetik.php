@@ -10,40 +10,39 @@ class Genetik extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->load->model("supplier_model");
+        $this->load->model("bobot_model");
     }
 
-    public function optimasi($target,$jumlah_populasi,$mutasi){
-        $data['populasi']	= $this->supplier_model->getRandom($jumlah_populasi);
-        $data['title']	= 'Sistem Optimasi Bobot';
-        $data['nav']	= '4';
+    public function optimasi($jumlah_populasi,$mutasi,$crossover){
+        $data['gen']	            = $this->bobot_model->getRandom($jumlah_populasi);
+        $data['nav']	            = 5;
+        $data['title']	            = 5;
+        
         $this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
-		$this->load->view('random', $data);
+        $this->load->view('random',$data);
 		$this->load->view('_partials/foot', $data);
-
     }
 
     public function genetika(){
-        $target             = $this->input->post('target');
+        $crossover          = $this->input->post('target');
         $jumlah_populasi	= $this->input->post('jumlah_populasi');
         $mutasi             = $this->input->post('mutasi');
 
-        return $this->optimasi($target,$jumlah_populasi,$mutasi);
-    }
-
-    public function populasi(){
-
+        return $this->optimasi($crossover,$jumlah_populasi,$mutasi);
     }
     
     public function seleksi(){
-        
+        // $populasi['']
     }
     
     public function crossover(){
         
     }
-    
+
+    public function skor(){
+    }
 
     public function fitness(){
 
