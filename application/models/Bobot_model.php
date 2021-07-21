@@ -83,7 +83,7 @@ class Bobot_model extends CI_Model
 
     public function delete()
     {
-        $id                    = $this->input->post('id_anggota');
+        $id	= $this->input->post('id_anggota');
         $this->db->where('id_anggota', $id);
         return $this->db->delete($this->_table);
     }

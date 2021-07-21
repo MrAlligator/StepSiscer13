@@ -8,18 +8,19 @@ class Supplier_model extends CI_Model
     public $nama_perusahaan;
     public $alamat;
     
-    public function getAll()
-    {
+    public function getAll(){
         return $this->db->get($this->_table)->result();
     }
 
-    public function getKriteria()
-    {
+    public function getKriteria(){
         return $this->db->get('tb_kriteria')->result();
     }
     
-    public function getRandom($jumlah_populasi)
-    {
+    public function getBobot(){
+        return $this->db->select('bobot')->get('tb_kriteria')->result();
+    }
+    
+    public function getRandom($jumlah_populasi){
         $this->db->limit($jumlah_populasi,0);
         $this->db->order_by("RAND ()");
         return $this->db->get($this->_table)->result();
@@ -35,8 +36,7 @@ class Supplier_model extends CI_Model
         return $this->db->insert($this->_table,$data);
     }
 
-    public function update()
-    {
+    public function update(){
         $id					= $this->input->post('id_anggota');
         $data = array(
             'nama_anggota'      => $this->input->post('nama_anggota'),
@@ -47,10 +47,8 @@ class Supplier_model extends CI_Model
         return $this->db->update($this->_table,$data);
     }
     
-    public function delete()
-    {
+    public function delete(){
         $id					= $this->input->post('id_anggota');
-        
         $this->db->where('id_anggota', $id);
         return $this->db->delete($this->_table);
     }
