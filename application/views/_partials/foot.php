@@ -4,7 +4,7 @@
                 <ul>
                     <li>
                         <a href="#" data-toggle="modal" data-target="#creative">
-                            Creative Tim
+                            TIM KREATIF
                         </a>
                     </li>
 

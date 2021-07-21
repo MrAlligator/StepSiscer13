@@ -9,9 +9,18 @@ class Genetik extends CI_Controller{
     
     public function __construct(){
         parent::__construct();
+        $this->load->model("supplier_model");
     }
 
     public function optimasi($target,$jumlah_populasi,$mutasi){
+        $data['populasi']	= $this->supplier_model->getRandom($jumlah_populasi);
+        $data['title']	= 'Sistem Optimasi Bobot';
+        $data['nav']	= '4';
+        $this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('random', $data);
+		$this->load->view('_partials/foot', $data);
 
     }
 

@@ -11,37 +11,44 @@ class Bobot_model extends CI_Model
         return $this->db->get($this->_table)->result();
     }
     
-    public function create()
-    {
-        for( $i=1; $i<=10; $i++){
+    public function create(){
             $data = array(
-                'id_anggota'        => $this->input->post('id_anggota'),
-                'id_kriteria'       => $i,
-                'bobot'             => $this->input->post('kriteria'.$i)
+                'id_anggota'    => $this->input->post('id_anggota'),
+                'k1'             => $this->input->post('1'),
+                'k2'             => $this->input->post('2'),
+                'k3'             => $this->input->post('3'),
+                'k4'             => $this->input->post('4'),
+                'k5'             => $this->input->post('5'),
+                'k6'             => $this->input->post('6'),
+                'k7'             => $this->input->post('7'),
+                'k8'             => $this->input->post('8'),
+                'k9'             => $this->input->post('9'),
+                'k10'             => $this->input->post('10')
             );
-            $this->db->insert($this->_table,$data);
-        }
-        return $this->db->get($this->_table)->result();
+            return $this->db->insert($this->_table,$data);
     }
     
     public function update(){
-        $id		= $this->input->post('id_anggota');
-        for($i=1; $i<=10; $i++){
-            $data = array(
-                'id_anggota'        => $this->input->post('id_anggota'),
-                'id_kriteria'       => $i,
-                'bobot'             => $this->input->post('kriteria'.$i)
-            );
-            $this->db->where('id_anggota', $id);
-            $this->db->update($this->_table,$data);
-        } 
-    return $this->db->get($this->_table)->result();
+        $data = array(
+            'id_anggota'    => $this->input->post('id_anggota'),
+            'k1'             => $this->input->post('1'),
+            'k2'             => $this->input->post('2'),
+            'k3'             => $this->input->post('3'),
+            'k4'             => $this->input->post('4'),
+            'k5'             => $this->input->post('5'),
+            'k6'             => $this->input->post('6'),
+            'k7'             => $this->input->post('7'),
+            'k8'             => $this->input->post('8'),
+            'k9'             => $this->input->post('9'),
+            'k10'             => $this->input->post('10')
+        );
+        $this->db->where('id_anggota', $this->input->post('id_anggota'));
+        return $this->db->update($this->_table, $data);
     }
     
     public function delete()
     {
         $id					= $this->input->post('id_anggota');
-        
         $this->db->where('id_anggota', $id);
         return $this->db->delete($this->_table);
     }

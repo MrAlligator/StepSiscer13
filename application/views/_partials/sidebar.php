@@ -30,6 +30,17 @@
                 <i class="material-icons">person</i><p>User Profile</p>
             </a>
             </li>
+            
+            <?php if($nav==5) :?>
+            <li class="nav-item active">
+            <?php else :?>
+            <li class="nav-item">
+            <?php endif;?>
+                
+            <a class="nav-link" href="<?= base_url('welcome/kriteria') ?>">
+                <i class="material-icons">bubble_chart</i><p>Kriteria</p>
+            </a>
+            </li>
         
     
             <?php endif; ?>
