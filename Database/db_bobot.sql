@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2021 at 11:49 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Waktu pembuatan: 21 Jul 2021 pada 09.54
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_bobot`
+-- Struktur dari tabel `tb_bobot`
 --
 
 CREATE TABLE `tb_bobot` (
@@ -35,7 +36,7 @@ CREATE TABLE `tb_bobot` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_detail_bobot`
+-- Struktur dari tabel `tb_detail_bobot`
 --
 
 CREATE TABLE `tb_detail_bobot` (
@@ -47,7 +48,7 @@ CREATE TABLE `tb_detail_bobot` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_kriteria`
+-- Struktur dari tabel `tb_kriteria`
 --
 
 CREATE TABLE `tb_kriteria` (
@@ -56,7 +57,7 @@ CREATE TABLE `tb_kriteria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_kriteria`
+-- Dumping data untuk tabel `tb_kriteria`
 --
 
 INSERT INTO `tb_kriteria` (`id_kriteria`, `kriteria`) VALUES
@@ -74,7 +75,7 @@ INSERT INTO `tb_kriteria` (`id_kriteria`, `kriteria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_supplier`
+-- Struktur dari tabel `tb_supplier`
 --
 
 CREATE TABLE `tb_supplier` (
@@ -85,7 +86,7 @@ CREATE TABLE `tb_supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_supplier`
+-- Dumping data untuk tabel `tb_supplier`
 --
 
 INSERT INTO `tb_supplier` (`id_anggota`, `nama_anggota`, `nama_perusahaan`, `alamat`) VALUES
@@ -247,7 +248,7 @@ INSERT INTO `tb_supplier` (`id_anggota`, `nama_anggota`, `nama_perusahaan`, `ala
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -262,17 +263,17 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `name`, `email`, `foto_user`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(9, 'Rizki Widya Pratama', 'rizkiw8778@gmail.com', 'default.jpg', '$2y$10$Q7LlWXaF1.6tlkdoTC5wbuKCuHc.ydfPq6OvYur8z8TYnAtfwQdVW', 1, 1, 1619068190),
+(9, 'Rizki Widya Pratama', 'rizkiw8778@gmail.com', 'default.jpg', '$2y$10$ObTpN6zOShoG6.V.kmmP9ummGy/UAik46EBwME08VAxtCpu1zUc.G', 1, 1, 1619068190),
 (10, 'Heri Suhartono', 'herisuhartono23@gmail.com', 'default.jpg', '$2y$10$Q7LlWXaF1.6tlkdoTC5wbuKCuHc.ydfPq6OvYur8z8TYnAtfwQdVW', 2, 1, 1619068190);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_role`
+-- Struktur dari tabel `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -281,7 +282,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data untuk tabel `user_role`
 --
 
 INSERT INTO `user_role` (`id_role`, `role`) VALUES
@@ -293,65 +294,65 @@ INSERT INTO `user_role` (`id_role`, `role`) VALUES
 --
 
 --
--- Indexes for table `tb_bobot`
+-- Indeks untuk tabel `tb_bobot`
 --
 ALTER TABLE `tb_bobot`
   ADD PRIMARY KEY (`id_bobot`);
 
 --
--- Indexes for table `tb_kriteria`
+-- Indeks untuk tabel `tb_kriteria`
 --
 ALTER TABLE `tb_kriteria`
   ADD PRIMARY KEY (`id_kriteria`);
 
 --
--- Indexes for table `tb_supplier`
+-- Indeks untuk tabel `tb_supplier`
 --
 ALTER TABLE `tb_supplier`
   ADD PRIMARY KEY (`id_anggota`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `user_role`
+-- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_bobot`
+-- AUTO_INCREMENT untuk tabel `tb_bobot`
 --
 ALTER TABLE `tb_bobot`
   MODIFY `id_bobot` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_kriteria`
+-- AUTO_INCREMENT untuk tabel `tb_kriteria`
 --
 ALTER TABLE `tb_kriteria`
   MODIFY `id_kriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tb_supplier`
+-- AUTO_INCREMENT untuk tabel `tb_supplier`
 --
 ALTER TABLE `tb_supplier`
   MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=279;
 
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `user_role`
+-- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

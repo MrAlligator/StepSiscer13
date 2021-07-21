@@ -9,8 +9,9 @@ class Welcome extends CI_Controller
 		$this->load->model("supplier_model");
 		$this->load->model("bobot_model");
 		$this->load->model("user_model");
+		$this->load->library('form_validation');
 	}
-	
+
 	public function index()
 	{
 		$data['supplier']	= $this->supplier_model->getAll();
@@ -24,14 +25,14 @@ class Welcome extends CI_Controller
 		$this->load->view('blank', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function hitung($id)
 	{
 		$data['title']		= 'Bobot Supplier';
 		$data['nav']		= '3';
 		$data['supplier']	= $this->db->get_where('tb_supplier', ['id_anggota' => $id])->row_array();
-		for( $i=1; $i<=10; $i++){
-			$data['bobot_supplier'.$i] = $this->db->get_where('tb_bobot', ['id_anggota' => $id, 'id_kriteria'=>$i])->row_array();
+		for ($i = 1; $i <= 10; $i++) {
+			$data['bobot_supplier' . $i] = $this->db->get_where('tb_bobot', ['id_anggota' => $id, 'id_kriteria' => $i])->row_array();
 		}
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
@@ -39,7 +40,7 @@ class Welcome extends CI_Controller
 		$this->load->view('hitung', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function bobot_supplier()
 	{
 		$nama_anggota	= $this->input->post('nama_anggota');
@@ -48,37 +49,38 @@ class Welcome extends CI_Controller
 		$query			= $this->bobot_model->create();
 		$bobot			= $this->bobot_model->update();
 		$cek 			= $this->db->get_where('tb_bobot', ['id_anggota' => $id])->row_array();
-		
-		if ($cek=0){
+
+		if ($cek = 0) {
 			if ($query) {
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' tersimpan</div>');
 				redirect('welcome/supplier');
 			} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot' . $nama_anggota . ' gagal tersimpan</div>');
-			redirect('welcome/supplier');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot' . $nama_anggota . ' gagal tersimpan</div>');
+				redirect('welcome/supplier');
 			}
-		}else{
+		} else {
 			if ($bobot) {
 				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data bobot ' . $nama_anggota . ' tersimpan</div>');
 				redirect('welcome/supplier');
 			} else {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot' . $nama_anggota . ' gagal tersimpan</div>');
-			redirect('welcome/supplier');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data bobot' . $nama_anggota . ' gagal tersimpan</div>');
+				redirect('welcome/supplier');
 			}
 		}
 	}
-	
+
 	public function profil()
 	{
 		$data['title']	= 'User Profile';
 		$data['nav']	= '2';
+		$data['user'] 	= $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
 		$this->load->view('profil', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function supplier()
 	{
 		$data['title']		= 'Data Supplier';
@@ -90,7 +92,7 @@ class Welcome extends CI_Controller
 		$this->load->view('supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function optimasi()
 	{
 		$data['title']		= 'Optimasi Bobot';
@@ -102,7 +104,7 @@ class Welcome extends CI_Controller
 		$this->load->view('optimasi', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function add_supplier()
 	{
 		$data['title'] = 'Tambah Data Supplier';
@@ -113,14 +115,14 @@ class Welcome extends CI_Controller
 		$this->load->view('add_supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function create_data_supplier()
 	{
 		$data['title']	= 'Tambah Data Supplier';
 		$data['nav']	= '3';
 		$nama_anggota	= $this->input->post('nama_anggota');
 		$query = $this->supplier_model->create();
-		
+
 		if ($query) {
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data ' . $nama_anggota . ' tersimpan</div>');
 			redirect('welcome/supplier');
@@ -129,7 +131,7 @@ class Welcome extends CI_Controller
 			redirect('welcome/supplier');
 		}
 	}
-	
+
 	public function update_supplier($id)
 	{
 		$data['title']		= 'Ubah Data Supplier';
@@ -141,14 +143,14 @@ class Welcome extends CI_Controller
 		$this->load->view('update_supplier', $data);
 		$this->load->view('_partials/foot', $data);
 	}
-	
+
 	public function delete_supplier()
 	{
 		$id					= $this->input->post('id_anggota');
 		$data['nav'] 		= '3';
 		$nama_belum_ubah	= $this->input->post('nama_belum_ubah');
 		$query = $this->supplier_model->delete();
-		
+
 		if ($query) {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data' . $nama_belum_ubah . ' telah terhapus</div>');
 			redirect('welcome/supplier');
@@ -157,7 +159,7 @@ class Welcome extends CI_Controller
 			redirect('welcome/supplier');
 		}
 	}
-	
+
 	public function edit_supplier()
 	{
 		$id					= $this->input->post('id_anggota');
@@ -171,6 +173,107 @@ class Welcome extends CI_Controller
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data ' . $nama_belum_ubah . ' gagal diubah</div>');
 			redirect('welcome/supplier');
+		}
+	}
+
+	public function updatepass()
+	{
+		$data['title']	= 'Ubah Password';
+		$data['nav']	= '2';
+		$data['user'] 	= $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$this->form_validation->set_rules('oldpass', 'Old Password', 'required|trim');
+		$this->form_validation->set_rules('newpass', 'New Password', 'required|trim|min_length[8]|matches[confirmpass]', [
+			'matches' => 'Password tidak Sama!',
+			'min_length' => 'Password tidak boleh kurang dari 8 karakter!'
+		]);
+		$this->form_validation->set_rules('confirmpass', 'New Password Confirmation', 'required|trim|min_length[8]|matches[newpass]', [
+			'matches' => 'Password tidak Sama!',
+			'min_length' => 'Password tidak boleh kurang dari 8 karakter!'
+		]);
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('_partials/head', $data);
+			$this->load->view('_partials/sidebar', $data);
+			$this->load->view('_partials/topbar', $data);
+			$this->load->view('updatepass', $data);
+			$this->load->view('_partials/foot', $data);
+		} else {
+			$current_password = $this->input->post('oldpass');
+			$new_password = $this->input->post('newpass');
+			if (!password_verify($current_password, $data['user']['password'])) {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password lama Salah!</div>');
+				redirect('welcome/updatepass');
+			} else {
+				if ($current_password == $new_password) {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan Password lama!</div>');
+					redirect('welcome/updatepass');
+				} else {
+					$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+
+					$this->db->set('password', $password_hash);
+					$this->db->where('email', $this->session->userdata('email'));
+					$this->db->update('tb_user');
+
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil diganti!</div>');
+					redirect('welcome/profil');
+				}
+			}
+		}
+	}
+	public function updatepict()
+	{
+		$data['title'] = 'Edit Picture';
+		$data['nav'] = '2';
+		$data['user'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+
+		if ($this->form_validation->run() == false) {
+			$this->load->view('_partials/head', $data);
+			$this->load->view('_partials/sidebar', $data);
+			$this->load->view('_partials/topbar', $data);
+			$this->load->view('updatepicture', $data);
+			$this->load->view('_partials/foot', $data);
+		} else {
+			$name = $this->input->post('name');
+			$email = $this->session->userdata('email');
+
+			$upload_image = $_FILES['image']['name'];
+			// var_dump($upload_image);
+			// die;
+
+			if ($upload_image) {
+				$config['allowed_types'] = 'jpg|png';
+				$config['max_size']         = '2048';
+				$config['upload_path']     = './assets/img/user/';
+
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('image')) {
+					$old_image = $data['user']['foto_user'];
+					if ($old_image != 'default.jpg') {
+						unlink(FCPATH . 'assets/img/user/' . $old_image);
+					}
+					$new_image = $this->upload->data('file_name');
+					$this->db->where('email', $email);
+					$qq = $this->db->update('tb_user', array('foto_user' => $new_image));
+					if ($qq) {
+						echo $email;
+					} else {
+						$err = $this->db->error();
+						echo $err['message'];
+					}
+				} else {
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
+					redirect('welcome/updatepict');
+				}
+			}
+
+			$this->db->set('name', $name);
+			$this->db->where('email', $email);
+			$this->db->update('tb_user');
+
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate</div>');
+			redirect('welcome/profil');
 		}
 	}
 }

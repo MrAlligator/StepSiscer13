@@ -2,6 +2,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8">
+                            <?php echo $this->session->flashdata('message'); ?>
                             <div class="card">
                                 <div class="card-header card-header-primary">
                                     <h4 class="card-title">Edit Profile</h4>
@@ -13,7 +14,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Email address</label>
-                                                    <input type="email" class="form-control" value="<?= $_SESSION['email']?>">
+                                                    <input type="email" class="form-control" value="<?= $_SESSION['email'] ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -21,12 +22,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Name</label>
-                                                    <input type="text" class="form-control" value="<?= $_SESSION['name']?>">
+                                                    <input type="text" class="form-control" value="<?= $_SESSION['name'] ?>">
                                                 </div>
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
                                         <div class="clearfix"></div>
+                                        <a class="btn btn-primary pull-right" href="<?= base_url('welcome/updatepass') ?>">Edit Password</a>
                                     </form>
                                 </div>
                             </div>
@@ -35,20 +37,21 @@
                             <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="javascript:;">
-                                        <img class="img" src="<?= base_url('assets/img/default.png') ?>" />
+                                        <img class="img" src="<?php echo base_url('assets/img/user/') . $user['foto_user']; ?>" />
                                     </a>
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-category text-gray">
-                                    <?php 
-                                    if ($_SESSION['role_id'] == 1) {
-                                        echo "Administrator";
-                                    }else{
-                                        echo "User";
-                                    }
-                                    ?>
+                                        <?php
+                                        if ($_SESSION['role_id'] == 1) {
+                                            echo "Administrator";
+                                        } else {
+                                            echo "User";
+                                        }
+                                        ?>
                                     </h6>
-                                    <h4 class="card-title"><?=$_SESSION['name'];?></h4>
+                                    <h4 class="card-title"><?= $_SESSION['name']; ?></h4>
+                                    <a class="btn btn-primary pull-center" href="<?= base_url('welcome/updatepict') ?>">Change Picture</a>
                                 </div>
                             </div>
                         </div>
