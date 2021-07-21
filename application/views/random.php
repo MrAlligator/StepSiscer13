@@ -15,8 +15,8 @@
             <th>No</th>
                 <th>Id Anggota</th>
                 <th>Nama</th>
-                <th>Perusahaan</th>
                 <th>Alamat</th>
+                <th>Nilai Fitness</th>
         </thead>
         <tbody>
         <?php   $no = 1;
@@ -25,8 +25,8 @@
                 <td><?= $no++;?>.</td>
                 <td><?= $sup->id_anggota?></td>
                 <td><?= $sup->nama_anggota ?></td>
-                <td><?= $sup->nama_perusahaan ?></td>
                 <td><?= $sup->alamat ?></td>
+                <td><?= RAND(0.0,5.0) ?></td>
             </tr>
         <?php endforeach; ?>
         </tbody>
