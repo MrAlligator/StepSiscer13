@@ -28,15 +28,19 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="from-group row">
-                                        <div class="col-sm-5">
-                                            <img src="<?php echo base_url('assets/img/user/') . $user['foto_user']; ?>" class='img-thumbnail'>
-                                        </div>
-                                        <div class="col-sm-7">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="image" name="image">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                            <div class="fileinput-new thumbnail img-raised">
+                                                <img src="<?php echo base_url('assets/img/user/') . $user['foto_user']; ?>" class="img" alt="..." width="200" height="200">
+                                            </div>
+                                            <div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+                                            <div>
+                                                <span class="btn btn-raised btn-round btn-default btn-file">
+                                                    <span class="fileinput-new">Select image</span>
+                                                    <span class="fileinput-exists">Change</span>
+                                                    <input type="file" class="form-control" id="image" name="image" />
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
