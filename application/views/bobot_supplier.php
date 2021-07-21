@@ -43,7 +43,7 @@
                                 <label class="input-group-text"><?=$crit->kriteria?></label>
                             </div>
                             <div class="col-3">
-                                <select name="<?=$no?>" class="custom-select">
+                                <select name="k<?=$no?>" class="custom-select">
                                     <option selected>
                                         <?php if(isset($bobot_supplier)){?>
                                             <?=$bobot_supplier['k'.$no]?>

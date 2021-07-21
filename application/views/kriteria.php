@@ -23,11 +23,13 @@
                             </div>
                         </div>
                         
-                        <form>
+                        <form method="post" action="<?= base_url('welcome/skor') ?>">
+                        <?= $this->session->flashdata('message'); ?>
                             <div class="row input-group mb-3">
                                 <?php $i = 1; foreach($kriteria as $crit):?>
                             <div class="col-1 input-group-prepend">
                                 <label class="input-group-text"><?=$i?></label>
+                                <input class="input-group-text" name="id<?=$i?>"hidden="true" value="<?=$i?>">
                             </div>
                             <div class="col-8 input-group-prepend">
                                 <label class="input-group-text"><?=$crit->kriteria?></label>

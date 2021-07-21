@@ -9,6 +9,8 @@ class Welcome extends CI_Controller
 		$this->load->model("supplier_model");
 		$this->load->model("bobot_model");
 		$this->load->model("user_model");
+		$this->load->model("skor_model");
+		$this->load->model("kriteria_model");
 		$this->load->library('form_validation');
 	}
 
@@ -44,8 +46,11 @@ class Welcome extends CI_Controller
 	{
 		$nama_anggota	= $this->input->post('nama_anggota');
 		$id				= $this->input->post('id_anggota');
+		$id_anggota		= $this->input->post('id_anggota');
 		$data['nav']	= '3';
 		$cek 			= $this->db->get_where('tb_bobot', ['id_anggota' => $id])->row_array();
+		
+		$this->db->query("INSERT INTO tb_skor (id_anggota, skor) VALUES ($id_anggota, 100)");
 		
 		if ($cek==0){
 			if ($this->bobot_model->create()) {
@@ -285,5 +290,40 @@ class Welcome extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate</div>');
 			redirect('welcome/profil');
 		}
+	}
+	public function skor(){
+		$bobot=$this->bobot_model->getAll();
+			foreach ($bobot as $key):
+				$id_anggota = $key->id_anggota;
+				$skor =
+					(intval($key->k1)*intval($this->input->post('bobot1')))+
+					(intval($key->k2)*intval($this->input->post('bobot2')))+
+					(intval($key->k3)*intval($this->input->post('bobot3')))+
+					(intval($key->k4)*intval($this->input->post('bobot4')))+
+					(intval($key->k5)*intval($this->input->post('bobot5')))+
+					(intval($key->k6)*intval($this->input->post('bobot6')))+
+					(intval($key->k7)*intval($this->input->post('bobot7')))+
+					(intval($key->k8)*intval($this->input->post('bobot8')))+
+					(intval($key->k9)*intval($this->input->post('bobot9')))+
+					(intval($key->k10)*intval($this->input->post('bobot10')));
+
+					$query = $this->db->query("SELECT * FROM tb_skor WHERE id_anggota = $id_anggota");
+					if($query = 0){
+						$this->db->query("INSERT INTO tb_skor (id_anggota, skor) VALUES ($id_anggota, $skor)");
+						// $this->session->set_flashdata('message'.$id_anggota, '<div class="alert alert-success" role="alert">Data berhasil '.$id_anggota.' '.$skor.' diupdate</div>');
+					}else{
+						$this->db->query("UPDATE tb_skor SET skor = $skor WHERE id_anggota = $id_anggota");
+						// $this->session->set_flashdata('message'.$id_anggota, '<div class="alert alert-danger" role="alert">Data berhasil '.$id_anggota.' '.$skor.' diupdate</div>');
+					}
+				endforeach;
+
+		if($this->kriteria_model->update()){
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate</div>');
+			redirect('welcome/kriteria');
+		}else{
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data gagal diupdate</div>');
+			redirect('welcome/kriteria');
+		}
+
 	}
 }

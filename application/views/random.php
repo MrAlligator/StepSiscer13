@@ -13,8 +13,7 @@
                             <table id="table_supplier" class="display table-striped" style="width:100%">
                                 <thead class="text-primary">
                                     <th>No</th>
-                                    <th><?= var_dump($b);
-                                        die; ?></th>
+                                    <th>k1</th>
                                     <th>Nama</th>
                                     <th>Alamat</th>
                                     <th>Nilai Fitness</th>

@@ -37,37 +37,48 @@ class Bobot_model extends CI_Model
     {
         $data = array(
             'id_anggota'    => $this->input->post('id_anggota'),
-            'k1'             => $this->input->post('1'),
-            'k2'             => $this->input->post('2'),
-            'k3'             => $this->input->post('3'),
-            'k4'             => $this->input->post('4'),
-            'k5'             => $this->input->post('5'),
-            'k6'             => $this->input->post('6'),
-            'k7'             => $this->input->post('7'),
-            'k8'             => $this->input->post('8'),
-            'k9'             => $this->input->post('9'),
-            'k10'             => $this->input->post('10')
+            'k1'             => $this->input->post('k1'),
+            'k2'             => $this->input->post('k2'),
+            'k3'             => $this->input->post('k3'),
+            'k4'             => $this->input->post('k4'),
+            'k5'             => $this->input->post('k5'),
+            'k6'             => $this->input->post('k6'),
+            'k7'             => $this->input->post('k7'),
+            'k8'             => $this->input->post('k8'),
+            'k9'             => $this->input->post('k9'),
+            'k10'             => $this->input->post('k10')
         );
         return $this->db->insert($this->_table, $data);
     }
 
     public function update()
     {
-        $data = array(
-            'id_anggota'    => $this->input->post('id_anggota'),
-            'k1'             => $this->input->post('1'),
-            'k2'             => $this->input->post('2'),
-            'k3'             => $this->input->post('3'),
-            'k4'             => $this->input->post('4'),
-            'k5'             => $this->input->post('5'),
-            'k6'             => $this->input->post('6'),
-            'k7'             => $this->input->post('7'),
-            'k8'             => $this->input->post('8'),
-            'k9'             => $this->input->post('9'),
-            'k10'             => $this->input->post('10')
+            $k1 = $this->input->post('k1');
+            $k2 = $this->input->post('k2');
+            $k3 = $this->input->post('k3');
+            $k4 = $this->input->post('k4');
+            $k5 = $this->input->post('k5');
+            $k6 = $this->input->post('k6');
+            $k7 = $this->input->post('k7');
+            $k8 = $this->input->post('k8');
+            $k9 = $this->input->post('k9');
+            $k10= $this->input->post('k10');
+            $id_anggota = $this->input->post('id_anggota');
+
+        $this->db->query("UPDATE tb_bobot SET
+            k1 = $k1,     
+            k2 = $k2,     
+            k3 = $k3,     
+            k4 = $k4,     
+            k5 = $k5,     
+            k6 = $k6,     
+            k7 = $k7,     
+            k8 = $k8,     
+            k9 = $k9,     
+            k10 = $k10     
+            WHERE id_anggota = $id_anggota"
         );
-        $this->db->where('id_anggota', $this->input->post('id_anggota'));
-        return $this->db->update($this->_table, $data);
+        return "berhasil";
     }
 
     public function delete()
