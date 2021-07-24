@@ -31,18 +31,14 @@
                                 <label class="input-group-text"><?=$i?></label>
                                 <input class="input-group-text" name="id<?=$i?>"hidden="true" value="<?=$i?>">
                             </div>
-                            <div class="col-8 input-group-prepend">
+                            <div class="col-7 input-group-prepend">
                                 <label class="input-group-text"><?=$crit->kriteria?></label>
-                                <a href="#krit<?=$i?>" data-toggle="modal"><i class="material-icons">notifications</i></a>
+                                
                             </div>
                             <div class="col-3">
-                                <select id="bobot" name="bobot<?=$i++?>" class="custom-select">
+                                <select id="bobot" name="bobot<?=$i?>" class="custom-select">
                                     <option selected>
-                                        <?php if(isset($crit->bobot)){?>
-                                            <?=$crit->bobot?>
-                                        <?php }else{ ?>
-                                            Bobot
-                                        <?php } ?> 
+                                    <?php if(isset($crit->bobot)){ echo $crit->bobot; }else{ echo "Bobot"; } ?> 
                                     </option>
                                     <option>1</option>
                                     <option>2</option>
@@ -51,6 +47,9 @@
                                     <option>5</option>
                                 </select>
                             </div>
+                        <div class="col-1">
+                            <a href="#krit<?=$i++?>" data-toggle="modal"><i class="material-icons">error outline</i></a>
+                        </div>
                             <?php endforeach; ?>
                         </div>
                     </div>

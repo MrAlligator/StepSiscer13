@@ -18,10 +18,18 @@ class Genetik extends CI_Controller
     }
 
     public function optimasi($jumlah_gen, $mutasi, $crossover){
-        $populasi = 4;
-        $gen   = $this->bobot_model->getRandom($jumlah_gen);
-        $bobot = $this->kriteria_model->getBobot1();
-
+        // $populasi = 4;
+        // $data['gen']   = $this->bobot_model->getRandom($jumlah_gen);
+        $data['skor']  = $this->skor_model->getRandom($jumlah_gen);
+        $data['sum']  = $this->skor_model->getSum();
+        $data['supplier']= $this->supplier_model->getAll();
+		$data['title']	= 'Sistem Optimasi Bobot';
+		$data['nav']	= '4';
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('random', $data);
+		$this->load->view('_partials/foot', $data);
     }
 
     public function genetika()
@@ -30,7 +38,7 @@ class Genetik extends CI_Controller
         $jumlah_gen         = $this->input->post('jumlah_gen');
         $mutasi             = $this->input->post('mutasi');
 
-        return $this->optimasi($crossover, $jumlah_gen, $mutasi);
+        return $this->optimasi($jumlah_gen, $mutasi, $crossover);
     }
 
     public function seleksi()

@@ -26,9 +26,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a class="btn btn-primary pull-right" href="<?= base_url('welcome/updatepict') ?>">Edit Profile</a>
-                                        <div class="clearfix"></div>
-                                        <a class="btn btn-primary pull-right" href="<?= base_url('welcome/updatepass') ?>">Edit Password</a>
+                                        <a class="btn btn-primary pull-right" href="<?= base_url('welcome/updatepict') ?>">Edit</a>
+                                        <a class="btn btn-success pull-right" href="<?= base_url('welcome/updatepass') ?>">Ubah Password</a>
                                     </form>
                                 </div>
                             </div>

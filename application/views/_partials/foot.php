@@ -80,7 +80,7 @@
                 <script>
                     document.write(new Date().getFullYear())
                 </script>, made with <i class="material-icons">favorite</i> by
-                <a href="https://www.creative-tim.com" target="_blank">Tim Kentang</a> for a better life.
+                <a href="https://www.instagram.com/zl_xxiv" target="_blank">Tim Kentang</a> for a better life.
             </div>
         </div>
     </footer>

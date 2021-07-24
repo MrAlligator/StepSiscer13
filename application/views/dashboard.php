@@ -1,6 +1,6 @@
 <div class="content">
     <div class="container-fluid">
-            
+        
 <div class="row">
     <div class="col-lg-3 col-md-6 col-sm-6">
         <a href="<?= base_url('welcome/supplier') ?>">
@@ -69,15 +69,16 @@
                 </button>
             </div>
             <div class="modal-body">
-            <table id="table_supplier">
-                <thead class="text-primary"></thead>
-                <tbody>
+                <div class="row">
+                    <div class="col-1">No</div>
+                    <div class="col">Nama</div>
+                </div>
                 <?php $no=1; foreach ($user as $u) : ?>
-                    <td><?= $no++;?>.</td>
-                    <td><?= $u->name; ?></td>
+                    <div class="row">
+                        <div class="col-1"><?= $no++;?>.</div>
+                        <div class="col"><?= $u->name; ?></div>
+                    </div>
                 <?php endforeach; ?>
-                </tbody>
-            </table>
             </div>
         </div>
     </div>
@@ -93,15 +94,16 @@
                 </button>
             </div>
             <div class="modal-body">
-            <table id="table_supplier">
-                <thead class="text-primary"></thead>
-                <tbody>
+                <div class="row">
+                    <div class="col-1">No</div>
+                    <div class="col">Nama</div>
+                </div>
                 <?php $no=1; foreach ($admin as $u) : ?>
-                    <td><?= $no++;?>.</td>
-                    <td><?= $u->name; ?></td>
+                    <div class="row">
+                        <div class="col-1"><?= $no++;?>.</div>
+                        <div class="col"><?= $u->name; ?></div>
+                    </div>
                 <?php endforeach; ?>
-                </tbody>
-            </table>
             </div>
         </div>
     </div>

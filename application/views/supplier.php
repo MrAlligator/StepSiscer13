@@ -22,7 +22,7 @@
                                     if (isset($_SESSION['email']) && $_SESSION['role_id'] == 1) :
                                     ?>
                                     <a class="text-center text-light" href="<?= base_url()?>welcome/add_supplier">
-                                    <button class="btn btn-success"><i class="material-icons">person </i> Tambah Supplier</button><a>
+                                    <button class="btn btn-success"><i class="material-icons">person add</i> Tambah Supplier</button><a>
                                     <?php 
                                     endif;
                                     ?>

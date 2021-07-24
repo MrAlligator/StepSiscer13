@@ -6,12 +6,10 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title">Edit Password</h4>
-                        <p class="card-category">Complete your profile</p>
-                        <a class="btn btn-primary pull-right" href="<?= base_url('welcome/profil') ?>">Back</a>
                     </div>
                     <div class="card-body">
                         <form action="<?= site_url('welcome/updatepass') ?>" method="post" enctype="multipart/form-data">
-                            <div class="row">
+                        <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Old Password</label>
@@ -33,6 +31,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <a class="btn btn-warning" href="<?= base_url('welcome/profil') ?>">KEMBALI</a>
+                            <button type="reset" class="btn btn-danger pull-right">BATAL</button>
                             <button type="submit" class="btn btn-primary pull-right">Update Password</button>
                             <div class="clearfix"></div>
                         </form>

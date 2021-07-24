@@ -20,18 +20,23 @@ class Skor_model extends CI_Model
         return $this->db->select('k1')->get($this->_table, ["id_anggota" => $id])->result();
     }
 
-    public function getAll()
-    {
+    public function getAll(){
+        $this->db->order_by("skor", "DESC");
         return $this->db->get($this->_table)->result();
     }
-
-    public function getRandom($jumlah_populasi)
-    {
-        $this->db->limit($jumlah_populasi, 0);
-        $this->db->order_by("RAND ()");
-        return $this->db->get($this->_table)->result();
+    
+    public function getRandom($jumlah_gen){
+        return $this->db->order_by('RAND ()')->get($this->_table, $jumlah_gen)->result();
     }
-
+    
+    public function getSum(){   
+        $kriteria = $this->db->select_sum('bobot')->get('tb_kriteria')->result();
+        foreach ($kriteria as $a):
+            $total=$a->bobot*5;
+        endforeach;
+        return $total;
+    }
+    
     public function update()
     {
         $data = array(

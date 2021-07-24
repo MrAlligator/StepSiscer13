@@ -24,7 +24,7 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/head', $data);
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
-		$this->load->view('blank', $data);
+		$this->load->view('dashboard', $data);
 		$this->load->view('_partials/foot', $data);
 	}
 	
@@ -80,6 +80,30 @@ class Welcome extends CI_Controller
 		$this->load->view('_partials/sidebar', $data);
 		$this->load->view('_partials/topbar', $data);
 		$this->load->view('profil', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+
+	public function admin()
+	{
+		$data['title']		= 'Data Admin';
+		$data['nav']		= '6';
+		$data['admin']		= $this->user_model->getAdmin();
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('admin', $data);
+		$this->load->view('_partials/foot', $data);
+	}
+
+	public function user()
+	{
+		$data['title']		= 'Data User';
+		$data['nav']		= '7';
+		$data['user']		= $this->user_model->getUser();
+		$this->load->view('_partials/head', $data);
+		$this->load->view('_partials/sidebar', $data);
+		$this->load->view('_partials/topbar', $data);
+		$this->load->view('user', $data);
 		$this->load->view('_partials/foot', $data);
 	}
 

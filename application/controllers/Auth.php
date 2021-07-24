@@ -3,14 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model("user_model");
     }
-    public function index()
-    {
+
+    public function index(){
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
             'valid_email' => 'Email Tidak Valid',
             'required' => 'Email Tidak Boleh Kosong!'
@@ -40,6 +39,7 @@ class Auth extends CI_Controller
                             'email' => $user['email'],
                             'id_user' => $user['id_user'],
                             'name' => $user['name'],
+                            'foto_user' => $user['foto_user'],
                             'role_id' => $user['role_id']
                         ];
                         $this->session->set_userdata($data);
@@ -61,14 +61,12 @@ class Auth extends CI_Controller
         }
     }
 
-    public function logout()
-    {
+    public function logout(){
         $this->session->sess_destroy();
-        redirect('welcome');
+        redirect();
     }
 
-    public function register()
-    {
+    public function register(){
         $this->form_validation->set_rules('name', 'Nama', 'required|trim', [
             'required' => 'Nama Tidak Boleh Kosong!'
         ]);
@@ -104,4 +102,55 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
+
+    public function add_admin(){
+    $data = [
+        'name' => htmlspecialchars($this->input->post('name', true)),
+        'email' => htmlspecialchars($this->input->post('email', true)),
+        'foto_user' => 'default.jpg',
+        'password' => password_hash('admin', PASSWORD_DEFAULT),
+        'role_id' => 1,
+        'is_active' => 1,
+        'date_created' => time()
+    ];
+
+    $this->db->insert('tb_user', $data);
+    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun berhasil dibuat.</div>');
+    redirect('welcome/admin');
+    }
+
+    public function delete_admin(){
+        $this->db->where('id_user', $this->input->post('id_user'));
+        $name = $this->input->post('name');
+        $this->db->delete('tb_user');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun '.$name.' telah dihapus.</div>');
+        redirect('welcome/admin');
+    }
+
+    public function delete_user(){
+        $this->db->where('id_user', $this->input->post('id_user'));
+        $name = $this->input->post('name');
+        $this->db->delete('tb_user');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Akun '.$name.' telah dihapus.</div>');
+        redirect('welcome/user');
+    }
+
+    public function upload_pic(){
+    $config['upload_path']          = './assets/img/user/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    $config['max_size']             = 10240;
+    $config['max_width']            = 10240;
+    $config['max_height']           = 7680;
+
+    $this->load->library('upload', $config);
+    if (!$this->upload->do_upload('userfile')){
+        redirect('welcome/updatepict');
+    }else{
+        $data = $this->upload->data();
+        $foto_user = $data['file_name'];
+        $this->db->set('foto_user', $foto_user)->where('id_user', $this->input->post('id_user'))->update('tb_user');
+        redirect('welcome/updatepict');
+    }
+    }
+
 }
